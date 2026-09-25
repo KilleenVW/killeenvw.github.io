@@ -82,16 +82,20 @@
       position: relative;
       z-index: 1;
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       justify-content: center;
       align-items: center;
+      box-sizing: border-box;
+      padding-bottom: 10px;
     }
 
     /* = CARD = */
     .card {
-      width: 90%;
+      width: 86%;
       max-width: 700px;
-      padding: 40px 40px 50px;
+      box-sizing: border-box;
+      padding: 28px 40px 38px;
       background: var(--card-bg);
       border-radius: 20px;
       text-align: center;
@@ -101,8 +105,10 @@
     /* = IDENTITY = */
     .name {
       font-family: "Great Vibes", cursive;
-      font-size: 72px;
+      font-size: 52px;
       font-weight: 400;
+      line-height: 1;
+      white-space: nowrap;
       color: var(--echo-soft-white);
       text-shadow:
         2px 2px 8px rgba(0,0,0,.6);
@@ -123,9 +129,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 15px 30px;
+      padding: 0;
       margin: 10px;
-      border-radius: 12px;
+      border-radius: 10px;
       background: var(--icon-bg);
       color: #0039A6;
       font-size: 22px;
@@ -135,7 +141,7 @@
     }
 
     .icon i {
-      font-size: 34px;
+      font-size: 23px;
       line-height: 1;
     }
 
@@ -204,47 +210,6 @@
       width: 35px;
       height: 35px;
       display: block;
-    }
-
-    /* = MOBILE = */    
-    @media (max-width: 600px) {
-
-      .container {
-        min-height: 100dvh;
-        align-items: center;
-        box-sizing: border-box;
-        padding-bottom: 10px;
-      }
-      
-      .card {
-        width: 86%;
-        box-sizing: border-box;
-        padding: 28px 40px 38px;
-      }
-
-      .name {
-        font-size: 52px;
-        line-height: 1;
-        white-space: nowrap;
-      }
-
-      .icon-row {
-        justify-content: center;
-        flex-wrap: nowrap;
-        gap: 10px;
-      }
-
-      .icon {
-        width: 42px;
-        height: 42px;
-        padding: 0;
-        border-radius: 10px;
-        background: var(--icon-bg);
-      }
-
-      .icon i {
-        font-size: 23px;
-      }
     }
 
   </style>
