@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,35 +5,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Sebastian Davila</title>
+  <title>Sebastian Davila | Volkswagen Specialist</title>
 
   <!-- ===== FONTS ===== -->
-  <link rel="preconnect" href="https://urldefense.com/v3/__https://fonts.googleapis.com__;!!BrVsjWms-IJ2!boVXmo7LiuSbe4UPRYItJ5fuAfCMNQZhtcqJzEPEO6M5xR17lsAzfDrt6JKNQyMRQ1MBvCnEqfVEmlQrTJatQtk8TA$ ">
-  <link rel="preconnect" href="https://urldefense.com/v3/__https://fonts.gstatic.com__;!!BrVsjWms-IJ2!boVXmo7LiuSbe4UPRYItJ5fuAfCMNQZhtcqJzEPEO6M5xR17lsAzfDrt6JKNQyMRQ1MBvCnEqfVEmlQrTJYGA415LA$ " crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://urldefense.com/v3/__https://fonts.googleapis.com/css2?family=Great*Vibes&display=swap__;Kw!!BrVsjWms-IJ2!boVXmo7LiuSbe4UPRYItJ5fuAfCMNQZhtcqJzEPEO6M5xR17lsAzfDrt6JKNQyMRQ1MBvCnEqfVEmlQrTJZyzU6peA$ "
+    href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
     rel="stylesheet">
   <link
-    href="https://urldefense.com/v3/__https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap__;!!BrVsjWms-IJ2!boVXmo7LiuSbe4UPRYItJ5fuAfCMNQZhtcqJzEPEO6M5xR17lsAzfDrt6JKNQyMRQ1MBvCnEqfVEmlQrTJbtuRnXKg$ "
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
   <!-- ===== ICONS ===== -->
   <link
     rel="stylesheet"
-    href="https://urldefense.com/v3/__https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css__;!!BrVsjWms-IJ2!boVXmo7LiuSbe4UPRYItJ5fuAfCMNQZhtcqJzEPEO6M5xR17lsAzfDrt6JKNQyMRQ1MBvCnEqfVEmlQrTJat0LrFCQ$ ">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
     /* = PAGE VARIABLES = */
     :root {
       --bg-image: url("/sebastian/assets/SDGTISnowBlur.png");
+
+      --silver: #C6C6C6;
+      --med-silver: #D5D5D5;
+      --bright-silver: #D8D8D8;
+      --light-silver: #CECECE;
+      --gray-silver: #B0B0B0;
+      --gray: #999999;
+      --gray-med: #A0A0A0;
+      --manila: #E7DCB6;
+      --white: #F5F5F5;
+      --bright-blue: #64A0F2;
+
+      /* CUSTOM ECHO PALETTE */
+      --echo-deep-blue: #24385F;
+      --echo-light-blue: #6996C7;
+      --echo-soft-white: #F7F5F2;
+      --echo-cool-gray: #A4A8AE;
+
+      /* PAGE MATERIALS */
       --page-overlay: rgba(0,0,0,.05);
       --card-bg: rgba(31,47,87,.85);
-      --button-bg: #5a5a5a;
-      --button-hover-bg: #d8e8ff;
-      --call-color: #25d366;
-      --text-color: #4aa3ff;
-      --email-color: #ffffff;
-      --facebook-color: #1877f2;
+
+      /* ACTION MATERIALS */
+      --icon-bg: #5A5A5A;
+      --icon-hover-bg: #D8E8FF;
+      --phone-color: #25D366;
+      --facebook-color: #1877F2;
     }
 
     /* = PAGE = */
@@ -43,23 +61,34 @@
       padding: 0;
       font-family: "Poppins", sans-serif;
       color: white;
-      background-image: var(--bg-image);
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background:
+        var(--bg-image)
+        center / cover
+        no-repeat
+        fixed;
     }
 
-    /* = BACKGROUND OVERLAY / PAGE SHELL = */
+    /* = BACKGROUND OVERLAY = */
     .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: var(--page-overlay);
+      pointer-events: none;
+    }
+
+    /* = PAGE CONTAINER = */
+    .container {
+      position: relative;
+      z-index: 1;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: var(--page-overlay);
     }
 
-    /* = CONTENT CARD = */
-    .content {
+    /* = CARD = */
+    .card {
       width: 90%;
       max-width: 700px;
       padding: 40px 40px 50px;
@@ -70,17 +99,17 @@
     }
 
     /* = IDENTITY = */
-    h1 {
+    .name {
       font-family: "Great Vibes", cursive;
       font-size: 72px;
       font-weight: 400;
-      color: white;
+      color: var(--echo-soft-white);
       text-shadow:
         2px 2px 8px rgba(0,0,0,.6);
     }
 
     /* = CONTACT / SOCIAL ACTIONS = */
-    .button-row {
+    .icon-row {
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
@@ -88,17 +117,16 @@
       margin-top: 30px;
     }
 
-    /* = BASE BUTTON STYLE = */
-    .btn {
+    .icon {
+      width: 42px;
+      height: 42px;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
       padding: 15px 30px;
       margin: 10px;
       border-radius: 12px;
-      background: var(--button-bg);
+      background: var(--icon-bg);
       color: #0039A6;
       font-size: 22px;
       font-weight: bold;
@@ -106,31 +134,31 @@
       transition: .3s;
     }
 
-    .btn i {
+    .icon i {
       font-size: 34px;
       line-height: 1;
     }
 
     /* = ACTION COLORS = */
-    .call i {
-      color: var(--call-color);
+    .phone i {
+      color: var(--phone-color);
     }
 
-    .text i {
-      color: var(--text-color);
+    .message i {
+      color: var(--echo-light-blue);
     }
 
     .email i {
-      color: var(--email-color);
+      color: var(--manila);
     }
 
-    .fb i {
+    .facebook i {
       color: var(--facebook-color);
     }
 
-    /* = BUTTON HOVER = */
-    .btn:hover {
-      background: var(--button-hover-bg);
+    /* = ACTION HOVER = */
+    .icon:hover {
+      background: var(--icon-hover-bg);
       transform: scale(1.05);
       opacity: .9;
     }
@@ -181,26 +209,26 @@
     /* = MOBILE = */
     @media (max-width: 600px) {
 
-      h1 {
+      .name {
         font-size: 52px;
         line-height: 1;
         white-space: nowrap;
       }
 
-      .button-row {
+      .icon-row {
         justify-content: center;
         flex-wrap: nowrap;
         gap: 8px;
       }
 
-      .btn {
+      .icon {
         width: 36px;
         height: 36px;
         border-radius: 10px;
-        background: var(--button-bg);
+        background: var(--icon-bg);
       }
 
-      .btn i {
+      .icon i {
         font-size: 28px;
       }
     }
@@ -210,20 +238,23 @@
 
 <body>
 
-  <div class="overlay">
+  <!-- = BACKGROUND OVERLAY = -->
+  <div class="overlay"></div>
 
-    <div class="content">
+  <!-- = PAGE CONTENT = -->
+  <main class="container">
 
+    <div class="card">
 
       <!-- = IDENTITY = -->
-      <h1>Sebastian Davila</h1>
+      <h1 class="name">Sebastian Davila</h1>
 
       <!-- = CONTACT / SOCIAL ACTIONS = -->
-      <div class="button-row">
+      <div class="icon-row">
 
         <a
+          class="icon phone"
           href="tel:+12544502783"
-          class="btn call"
           aria-label="Call Sebastian">
 
           <i
@@ -233,10 +264,9 @@
 
         </a>
 
-
         <a
+          class="icon message"
           href="sms:+12544502783"
-          class="btn text"
           aria-label="Text Sebastian">
 
           <i
@@ -246,10 +276,9 @@
 
         </a>
 
-
         <a
+          class="icon email"
           href="mailto:sdavila@killeenauto.com"
-          class="btn email"
           aria-label="Email Sebastian">
 
           <i
@@ -259,12 +288,11 @@
 
         </a>
 
-
         <a
-          href="https://urldefense.com/v3/__https://www.facebook.com/share/1DVJFEeLbL/?mibextid=wwXIfr__;!!BrVsjWms-IJ2!boVXmo7LiuSbe4UPRYItJ5fuAfCMNQZhtcqJzEPEO6M5xR17lsAzfDrt6JKNQyMRQ1MBvCnEqfVEmlQrTJZeqj0k2w$ "
+          class="icon facebook"
+          href="https://www.facebook.com/share/1DVJFEeLbL/?mibextid=wwXIfr"
           target="_blank"
           rel="noopener noreferrer"
-          class="btn fb"
           aria-label="Visit Sebastian on Facebook">
 
           <i
@@ -276,9 +304,8 @@
 
       </div>
 
-
       <!-- = LOCATION = -->
-      <div class="map-section">
+      <section class="map-section">
 
         <h3>Come See Me</h3>
 
@@ -287,16 +314,15 @@
         </p>
 
         <iframe
-          src="https://urldefense.com/v3/__https://www.google.com/maps?q=3221*20E*20Central*20Texas*20Expressway*20Killeen*20TX*2076543&output=embed__;JSUlJSUlJQ!!BrVsjWms-IJ2!boVXmo7LiuSbe4UPRYItJ5fuAfCMNQZhtcqJzEPEO6M5xR17lsAzfDrt6JKNQyMRQ1MBvCnEqfVEmlQrTJarbQE2Wg$ "
-          allowfullscreen=""
+          src="https://www.google.com/maps?q=3221%20E%20Central%20Texas%20Expressway%20Killeen%20TX%2076543&output=embed"
+          allowfullscreen
           loading="lazy"
           title="Volkswagen dealership location">
         </iframe>
 
-      </div>
+      </section>
 
-
-     <!-- = BRAND SIGNATURE = -->
+      <!-- = BRAND SIGNATURE = -->
       <div class="brand-footer">
 
         <a
@@ -314,8 +340,9 @@
 
       </div>
 
-  </div>
+    </div>
+
+  </main>
 
 </body>
-
 </html>
