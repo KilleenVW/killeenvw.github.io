@@ -1,0 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
+
+N:Brown;Brandon;;;
+FN:Brandon Brown
+
+ORG:Killeen Volkswagen
+TITLE:Sales Consultant
+
+TEL;TYPE=CELL:2549878217
+
+EMAIL:bbrown@killeenauto.com
+
+URL:https://killeenvw.github.io/brandon/
+URL:https://www.vw.com/
+
+ADR;TYPE=WORK:;;3221 East Central Texas Expressway;Killeen;TX;76543;USA
+
+NOTE:Your Volkswagen Sales Consultant at Killeen Volkswagen.
+
+END:VCARD
