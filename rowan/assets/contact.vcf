@@ -1,0 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
+
+N:Kimuli;Rowan;;;
+FN:Rowan Kimuli
+
+ORG:Killeen Volkswagen
+TITLE:Sales Consultant
+
+TEL;TYPE=CELL:7136143874
+
+EMAIL:rowan@killeenauto.com
+
+URL:https://killeenvw.github.io/rowan/
+URL:https://www.vw.com/
+
+ADR;TYPE=WORK:;;3221 East Central Texas Expressway;Killeen;TX;76543;USA
+
+NOTE:Your Volkswagen Sales Consultant at Killeen Volkswagen.
+
+END:VCARD
