@@ -138,6 +138,22 @@
         2px 2px 8px rgba(0,0,0,.6);
     }
 
+    .name a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .name a:active {
+      opacity: .85;
+    }
+
+    .name a:focus-visible {
+      outline: 2px solid var(--pure-white);
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    
 
     /* = CONTACT / SOCIAL ACTIONS = */
     .icon-row {
@@ -402,7 +418,14 @@
     <div class="card">
 
       <!-- = IDENTITY = -->
-      <h1 class="name">Sebastian Davila</h1>
+      <h1 class="name">
+        <a
+          href="assets/contact.vcf"
+          download
+          aria-label="Add Sebastian Davila to contacts">
+          Sebastian Davila
+        </a>
+      </h1>
 
 
       <!-- = CONTACT / SOCIAL ACTIONS = -->
