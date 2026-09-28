@@ -1,0 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
+
+N:Carranza;Jose;;;
+FN:Jose Carranza
+
+ORG:Killeen Volkswagen
+TITLE:Sales Consultant
+
+TEL;TYPE=CELL:6822395595
+
+EMAIL:jose@killeenauto.com
+
+URL:https://killeenvw.github.io/jose/
+URL:https://www.vw.com/
+
+ADR;TYPE=WORK:;;3221 East Central Texas Expressway;Killeen;TX;76543;USA
+
+NOTE:Your Volkswagen Sales Consultant at Killeen Volkswagen.
+
+END:VCARD
