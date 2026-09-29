@@ -144,6 +144,11 @@
       z-index: 4;      
     }
 
+    .btn-label i {
+      font-size: 18px;
+      line-height: 1;
+    }
+
     /* BUTTON INTERNAL ENERGY */
     .btn-energy {
       position: absolute;
@@ -415,15 +420,23 @@
         class="btn"
         id="contactButton"
         href="contact.vcf"
-        download>
-
+        download
+        aria-label="Add to Contacts">
+      
         <span
           class="btn-energy"
           aria-hidden="true">
         </span>
-
+      
         <span class="btn-label">
-          Add to Contacts
+
+          <!-- Add to Contacts -->
+
+          <i
+            class="fa-solid fa-user-plus"
+            aria-hidden="true">
+          </i>
+
         </span>
 
       </a>
