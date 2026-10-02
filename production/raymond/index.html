@@ -1,1 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Raymond | Volkswagen Specialist</title>
+
+  <!-- ===== FONTS ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap"
+    rel="stylesheet">
+  
+  <!-- ===== ICONS ===== -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+  <style>
+    /* = PAGE VARIABLES = */
+    :root {
+      --bg-image: url("JettaGLIBG.jpg");
+
+      --silver: #C6C6C6;
+      --med-silver: #D5D5D5;
+      --bright-silver: #D8D8D8;
+      --light-silver: #CECECE;
+      --gray-silver: #B0B0B0;
+      --gray: #999999;
+      --gray-med: #A0A0A0;
+      --manila: #E7DCB6;
+      --white: #F5F5F5;
+      --bright-blue: #64A0F2;
+
+      /* CUSTOM ECHO PALETTE */
+      --echo-deep-blue: #24385F;
+      --echo-light-blue: #6996C7;      
+      --echo-soft-white: #F7F5F2;
+      --echo-cool-gray: #A4A8AE;
+      
+      --card-bg: rgba(0, 0, 0, 0.45);
+      --page-overlay: rgba(0, 0, 0, 0.13);
+    }
+
+    /* = PAGE = */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Times New Roman, serif;
+      background:
+        var(--bg-image)
+        center / cover
+        no-repeat
+        fixed;
+    }
+
+    /* = BACKGROUND OVERLAY = */
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--page-overlay);
+      pointer-events: none;
+    }
+
+    /* = PAGE CONTAINER = */
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    /* = CARD = */
+    .card {
+      padding: 30px 35px 60px;
+      background: var(--card-bg);
+      border-radius: 18px;
+      backdrop-filter: blur(3px);
+      text-align: center;
+      margin: 0 8px;
+    }
+
+    /* = IDENTITY = */
+    .name {
+      margin: 0;
+      font-family: "Alex Brush", cursive;
+      font-size: 46px;
+      font-weight: 400;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      color: var(--echo-soft-white);
+
+      text-shadow:
+        0 1px 0 rgba(255,255,255,.10),
+        0 1px 2px rgba(0,0,0,.14);
+    }
+
+    /* = PRIMARY ACTION — ADD TO CONTACTS = */
+    .btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: inline-block;
+      width: auto;
+      min-width: 155px;
+      max-width: 70%;
+      padding: 11px 22px;
+      margin: 14px auto;
+      margin-top: 29px;
+
+      border: none;
+      border-radius: 30px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--echo-soft-white);
+
+      background:
+        linear-gradient(
+          180deg,
+          #416BA8 0%,
+          #31558B 26%,
+          #223C69 60%,
+          #162542 100%
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.10),
+        inset 0 -2px 2px rgba(0,0,0,.20),
+        0 7px 17px rgba(0,0,0,.29);
+    }
+
+    /* BUTTON LABEL */
+    .btn-label {
+      position: relative;
+      z-index: 4;      
+    }
+
+    /* BUTTON INTERNAL ENERGY */
+    .btn-energy {
+      position: absolute;
+      z-index: 1;
+      inset: 2px;
+      border-radius: inherit;
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          ellipse at 50% 51%,
+          rgba(78,122,238,0.72) 0%,
+          rgba(65,107,221,0.60) 7%,
+          rgba(52,92,202,0.552) 38%,
+          rgba(30,65,154,0.126) 71%,
+          rgba(30,65,154,0.042) 81%,
+          rgba(30,65,154,0) 90%          
+        );
+
+      transform: scale(1.30,1.19);
+      transform-origin: 50% 51%;
+      opacity: 0;
+      animation:
+        internal-energy-cycle
+        5s
+        ease-in-out
+        infinite;
+    }
+
+    /* BUTTON ENERGY ANIMATION */
+    @keyframes internal-energy-cycle {
+      0%      { opacity:0; }
+      8.8%    { opacity:0; }
+      13.2%   { opacity:.059; }
+      17.6%   { opacity:.128; }
+      22%     { opacity:.186; }
+      26.4%   { opacity:.258; }
+      48.4%   { opacity:.755; }
+      65.12%  { opacity:.755; }      
+      70.4%   { opacity:.542; }
+      75.68%  { opacity:.343; }
+      80.96%  { opacity:.173; }
+      85.36%  { opacity:.059; }
+      88%     { opacity:0; }
+      100%    { opacity:0; }
+    } 
+    
+    /* BUTTON UPPER MATERIAL RESPONSE */
+    .btn::before {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      left: 9%;
+      right: 9%;
+      top: 4px;
+      height: 36%;
+      border-radius: 999px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(63,129,220,.18) 0%,
+          rgba(42,101,190,.07) 38%,
+          rgba(31,75,150,.020) 70%,
+          rgba(31,75,150,0) 100%
+        );
+
+      filter: blur(9px);
+      pointer-events: none;
+    }
+
+    /* BUTTON EDGE TREATMENT */
+    .btn::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.18),
+        inset 0 -1px 0 rgba(0,0,0,.42);
+    }
+
+    /* = CONTACT ACTIONS = */
+    .icon-row {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 18px;
+    }
+
+    .icon {
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.24);
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+    }
+
+    .phone {
+      color: #25D366;
+    }
+
+    .message {
+      color: var(--echo-light-blue);
+    }
+
+    .email {
+      color: var(--manila);
+    }
+
+    /* = BRAND SIGNATURE = */
+    .brand-footer {
+      margin-top: 45px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .brand-footer a {
+      display: inline-flex;
+    }
+
+    .brand-signature {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    /* = PAGE DISCLAIMER = */
+    .disclaimer-button {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      z-index: 10;
+
+      width: 28px;
+      height: 28px;
+      padding: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border: 1px solid rgba(255,255,255,.45);
+      border-radius: 50%;
+
+      background: rgba(36,56,95,.72);
+      color: var(--echo-soft-white);
+
+      box-shadow:
+        0 2px 8px rgba(0,0,0,.28);
+
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+
+      cursor: pointer;
+    }
+
+    .disclaimer-button i {
+      font-size: 12px;
+    }
+
+    .disclaimer-button:focus-visible {
+      outline: 2px solid var(--echo-soft-white);
+      outline-offset: 2px;
+    }
+
+    .disclaimer-panel {
+      position: fixed;
+      right: 10px;
+      bottom: 48px;
+      z-index: 11;
+
+      width: min(320px, calc(100vw - 20px));
+      box-sizing: border-box;
+
+      padding: 16px 38px 16px 16px;
+
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 14px;
+
+      background: rgba(36,56,95,.96);
+      color: var(--echo-soft-white);
+
+      text-align: left;
+
+      box-shadow:
+        0 8px 24px rgba(0,0,0,.38);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .disclaimer-panel[hidden] {
+      display: none;
+    }
+
+    .disclaimer-panel h2 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .disclaimer-panel p {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: rgba(247,245,242,.88);
+    }
+
+    .disclaimer-close {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+
+      width: 26px;
+      height: 26px;
+      padding: 0;
+
+      border: 0;
+      background: transparent;
+      color: var(--echo-soft-white);
+
+      font-size: 20px;
+      line-height: 1;
+
+      cursor: pointer;
+    }
+
+    .disclaimer-close:focus-visible {
+      outline: 2px solid var(--echo-soft-white);
+      outline-offset: 1px;
+    }
+
+    /* = ACCESSIBILITY — REDUCED MOTION = */
+    @media (prefers-reduced-motion: reduce) {
+
+      .btn-energy {
+        animation: none;
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- = BACKGROUND OVERLAY = -->
+  <div class="overlay"></div>
+
+  <!-- = PAGE CONTENT = -->
+  <main class="container">
+
+    <div class="card">
+
+      <!-- = IDENTITY = -->
+      <h1 class="name">Raymond</h1>
+
+      <!-- = PRIMARY ACTION = -->
+      <a
+        class="btn"
+        id="contactButton"
+        href="contact.vcf"
+        download>
+
+        <span
+          class="btn-energy"
+          aria-hidden="true">
+        </span>
+
+        <span class="btn-label">
+          Add to Contacts
+        </span>
+
+      </a>
+
+      <!-- = CONTACT ACTIONS = -->
+      <div class="icon-row">
+
+        <a
+          class="icon phone"
+          href="tel:7276312950"
+          aria-label="Call Raymond">
+
+          <i
+            class="fa-solid fa-phone"
+            aria-hidden="true">
+          </i>
+
+        </a>
+
+        <a
+          class="icon message"
+          href="sms:7276312950"
+          aria-label="Text Raymond">
+
+          <i
+            class="fa-solid fa-message"
+            aria-hidden="true">
+          </i>
+
+        </a>
+
+        <a
+          class="icon email"
+          href="mailto:raymondcjr.vw@gmail.com"
+          aria-label="Email Raymond">
+
+          <i
+            class="fa-solid fa-envelope"
+            aria-hidden="true">
+          </i>
+
+        </a>
+
+      </div>
+
+      <!-- = BRAND SIGNATURE = -->
+      <div class="brand-footer">
+
+        <a
+          href="https://www.vw.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit the official Volkswagen website">
+
+          <img
+            class="brand-signature"
+            src="VW-logo-white.svg"
+            alt="Volkswagen">
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- = PAGE DISCLAIMER CONTROL = -->
+  <button
+    class="disclaimer-button"
+    id="disclaimerButton"
+    type="button"
+    aria-label="Page information and disclaimer"
+    aria-expanded="false"
+    aria-controls="disclaimerPanel">
+
+    <i
+      class="fa-solid fa-info"
+      aria-hidden="true">
+    </i>
+
+  </button>
+
+  <!-- = PAGE DISCLAIMER PANEL = -->
+  <aside
+    class="disclaimer-panel"
+    id="disclaimerPanel"
+    role="dialog"
+    aria-labelledby="disclaimerTitle"
+    hidden>
+
+    <button
+      class="disclaimer-close"
+      id="disclaimerClose"
+      type="button"
+      aria-label="Close disclaimer">
+      &times;
+    </button>
+
+    <h2 id="disclaimerTitle">
+      Independent Salesperson Page
+    </h2>
+
+    <p>
+      This independently created and maintained personal contact page is for a
+      Killeen Volkswagen sales professional and is not an official website of
+      Killeen Volkswagen or Volkswagen of America. Volkswagen trademarks and
+      logos are the property of their respective owners. The Volkswagen link
+      directs to the official Volkswagen website.
+    </p>
+
+  </aside>
+
+  <!-- = PAGE INTERACTIONS = -->
+  <script>
+
+    /* CONTACT BUTTON HAPTIC FEEDBACK */
+    const contactButton =
+      document.getElementById("contactButton");
+
+    contactButton.addEventListener("click", () => {
+
+      if ("vibrate" in navigator) {
+        navigator.vibrate(11);
+      }
+
+    });
+
+
+    /* PAGE DISCLAIMER */
+    const disclaimerButton =
+      document.getElementById("disclaimerButton");
+
+    const disclaimerPanel =
+      document.getElementById("disclaimerPanel");
+
+    const disclaimerClose =
+      document.getElementById("disclaimerClose");
+
+
+    function openDisclaimer() {
+
+      disclaimerPanel.hidden = false;
+
+      disclaimerButton.setAttribute(
+        "aria-expanded",
+        "true"
+      );
+
+      disclaimerClose.focus();
+
+    }
+
+
+    function closeDisclaimer(returnFocus = true) {
+
+      disclaimerPanel.hidden = true;
+
+      disclaimerButton.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      if (returnFocus) {
+        disclaimerButton.focus();
+      }
+
+    }
+
+
+    disclaimerButton.addEventListener("click", () => {
+
+      if (disclaimerPanel.hidden) {
+        openDisclaimer();
+      } else {
+        closeDisclaimer();
+      }
+
+    });
+
+
+    disclaimerClose.addEventListener("click", () => {
+
+      closeDisclaimer();
+
+    });
+
+
+    document.addEventListener("keydown", (event) => {
+
+      if (
+        event.key === "Escape" &&
+        !disclaimerPanel.hidden
+      ) {
+        closeDisclaimer();
+      }
+
+    });
+
+
+    document.addEventListener("click", (event) => {
+
+      if (
+        !disclaimerPanel.hidden &&
+        !disclaimerPanel.contains(event.target) &&
+        !disclaimerButton.contains(event.target)
+      ) {
+        closeDisclaimer(false);
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
