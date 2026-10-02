@@ -143,6 +143,19 @@
       z-index: 4;      
     }
 
+    .btn-label i {
+      font-size: 17px;
+      line-height: 1;
+      opacity: .30;
+      transform: translateX(2px);
+
+      animation:
+        icon-phase-cycle
+        5s
+        ease-in-out
+        infinite;
+    }
+
     /* BUTTON INTERNAL ENERGY */
     .btn-energy {
       position: absolute;
@@ -226,6 +239,29 @@
         inset 0 1px 0 rgba(255,255,255,.18),
         inset 0 -1px 0 rgba(0,0,0,.42);
     }
+
+    /* ICON ENERGY ANIMATION */
+    @keyframes icon-phase-cycle {
+      0%      { opacity: .00; }
+      8.8%    { opacity: .05; }
+
+      13.2%   { opacity: .106; }
+      17.6%   { opacity: .181; }
+      22%     { opacity: .238; }
+      26.4%   { opacity: .303; }
+
+      48.4%   { opacity: .80; }
+      65.12%  { opacity: .80; }
+
+      70.4%   { opacity: .584; }
+      75.68%  { opacity: .388; }
+      80.96%  { opacity: .219; }
+      85.36%  { opacity: .106; }
+
+      88%     { opacity: .05; }
+      100%    { opacity: .00; }
+    }
+
 
     /* = CONTACT ACTIONS = */
     .icon-row {
@@ -391,6 +427,11 @@
         animation: none;
         opacity: 0;
       }
+
+      .btn-label i {
+        animation: none;
+        opacity: .90;
+      }
     }
 
   </style>
@@ -414,7 +455,8 @@
         class="btn"
         id="contactButton"
         href="contact.vcf"
-        download>
+        download
+        aria-label="Add to Contacts">
 
         <span
           class="btn-energy"
@@ -422,7 +464,14 @@
         </span>
 
         <span class="btn-label">
-          Add to Contacts
+
+          <!-- Add to Contacts -->
+
+          <i
+            class="fa-solid fa-user-plus"
+            aria-hidden="true">
+          </i>
+
         </span>
 
       </a>
