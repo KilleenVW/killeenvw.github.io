@@ -48,17 +48,32 @@
       --card-bg: rgba(0, 0, 0, 0.50);
       --page-overlay: rgba(0, 0, 0, 0.11);
 
-      /* V3 MATERIAL TUNING KNOBS
-         These are intentionally explicit so blur/blending can be
-         introduced later without changing the layer architecture. */
+      /* V3 STATIC MATERIAL ARCHITECTURE CONTROLS
+         The layers are intentionally separated so later experiments can
+         change one physical responsibility at a time. */
+
+      /* Buried upper-range blue events. */
+      --v3-brilliance-opacity: 1;
+      --v3-brilliance-blur: 0px;
+      --v3-brilliance-blend: normal;
+
+      /* Submerged-field modulation. */
       --v3-material-opacity: 1;
       --v3-material-blur: 0px;
       --v3-material-blend: normal;
 
-      /* Reserved future scan controls. */
+      /* Dominant dark-field occlusion. */
+      --v3-dark-opacity: 1;
+      --v3-dark-blur: 0px;
+      --v3-dark-blend: normal;
+
+      /* Reserved future perimeter-only scan controls.
+         The same scan element can later be moved through the depth stack
+         by changing only --v3-scan-z: 5 / 15 / 25 / 35. */
       --v3-scan-opacity: 0;
       --v3-scan-blur: 0px;
-      --v3-scan-blend: screen;
+      --v3-scan-blend: normal;
+      --v3-scan-z: 5;
     }
 
     /* =========================================================
@@ -125,19 +140,23 @@
     }
 
     /* =========================================================
-       PRIMARY ACTION — V3 STATIC FULL-ILLUMINATION SPECIMEN
+       PRIMARY ACTION — V3 STATIC MATERIAL ARCHITECTURE
 
-       Material rule:
-       The button interior contains no true black. Every apparently
-       black region remains an extremely dark member of the blue family.
+       Governing material doctrine:
+       Build chroma first, bury it, then decide where it survives.
 
        Layer responsibilities:
-       .btn           = substrate / broad optical depth
-       .btn-material  = asymmetric internal material fields
-       .btn-energy    = reserved future traveling-light field
-       .btn::before   = surface glaze + top-left specular event
-       .btn::after    = bright cobalt perimeter ring
-       .btn-label     = icon
+       .btn             = CHROMA RESERVOIR
+       .btn-brilliance  = BURIED BRILLIANCE EVENTS
+       .btn-material    = SUBMERGED-FIELD MODULATION
+       .btn-dark-field  = DOMINANT DARK-FIELD OCCLUSION
+       .btn-energy      = RESERVED FUTURE PERIMETER-ONLY SCAN
+       .btn::after      = PERIMETER FILAMENT
+       .btn::before     = SPECULAR SURFACE RESPONSE
+       .btn-label       = ICON
+
+       The current numeric values are an architecture-establishment
+       specimen, not final material tuning.
        ========================================================= */
     .btn {
       position: relative;
@@ -158,47 +177,26 @@
       color: var(--echo-soft-white);
 
       /*
-        Deep-blue substrate: never reaches true black.
+        CHROMA RESERVOIR
 
-        SELECTIVE BRILLIANCE PASS:
-        Pull the overall tonal floor roughly halfway back toward the
-        darker specimen while keeping richer blue information available
-        in smaller, localized regions. The goal is darkness first,
-        brilliance second — not generalized brightening.
+        This is the native blue body of the material. It intentionally
+        contains no true black and is not responsible for creating the
+        final dark-field dominance by itself.
       */
       background:
         radial-gradient(
-          147% 127% at 16% -25%,
-          rgba(72, 133, 255, 0.36) 0%,
-          rgba(40, 89, 203, 0.185) 27%,
-          rgba(11, 34, 93, 0) 59%
-        ),
-        radial-gradient(
-          115% 99% at 94% 20%,
-          rgba(40, 99, 229, 0.21) 0%,
-          rgba(20, 55, 141, 0.092) 35%,
-          rgba(6, 23, 66, 0) 67%
-        ),
-        radial-gradient(
-          133% 84% at 38% 113%,
-          rgba(29, 85, 214, 0.23) 0%,
-          rgba(14, 47, 134, 0.108) 37%,
-          rgba(5, 22, 67, 0) 70%
-        ),
-        radial-gradient(
-          94% 74% at 87% 103%,
-          rgba(20, 62, 174, 0.11) 0%,
-          rgba(9, 34, 103, 0.052) 40%,
-          rgba(5, 21, 62, 0) 72%
+          130% 110% at 18% -12%,
+          rgba(58, 118, 244, 0.24) 0%,
+          rgba(30, 72, 177, 0.10) 34%,
+          rgba(10, 32, 88, 0) 68%
         ),
         linear-gradient(
           180deg,
-          #1848AE 0%,
-          #0E3077 17%,
-          #082052 39%,
-          #06163E 63%,
-          #041030 82%,
-          #040C28 100%
+          #123B91 0%,
+          #0D2D70 22%,
+          #0A245C 46%,
+          #081D4D 70%,
+          #071943 100%
         );
 
       box-shadow:
@@ -210,18 +208,47 @@
     }
 
     /* ---------------------------------------------------------
-       V3 MATERIAL / OPTICAL LAYER
+       BURIED BRILLIANCE EVENTS
 
-       Large fields overlap beyond obvious regional boundaries so the
-       eye reads one continuous material rather than stacked gradients.
+       Rare upper-range blue events live beneath the submerged and
+       dark-field layers so they can be partially hidden rather than
+       painted onto the finished surface.
+       --------------------------------------------------------- */
+    .btn-brilliance {
+      position: absolute;
+      z-index: 10;
+      inset: -10%;
+      border-radius: inherit;
+      pointer-events: none;
 
-       Dormant architecture controls:
-       - filter blur starts at 0px
-       - mix-blend-mode starts at normal
+      opacity: var(--v3-brilliance-opacity);
+      filter: blur(var(--v3-brilliance-blur));
+      mix-blend-mode: var(--v3-brilliance-blend);
+
+      background:
+        radial-gradient(
+          34% 64% at 21% 17%,
+          rgba(91, 158, 255, 0.29) 0%,
+          rgba(49, 111, 231, 0.15) 34%,
+          rgba(12, 39, 105, 0) 72%
+        ),
+        radial-gradient(
+          31% 58% at 70% 31%,
+          rgba(73, 140, 255, 0.22) 0%,
+          rgba(37, 91, 213, 0.10) 38%,
+          rgba(10, 35, 97, 0) 76%
+        );
+    }
+
+    /* ---------------------------------------------------------
+       SUBMERGED-FIELD MODULATION
+
+       These are broader internal blue bodies/veils. They sit above the
+       buried brilliance and below the dominant dark-field occlusion.
        --------------------------------------------------------- */
     .btn-material {
       position: absolute;
-      z-index: 1;
+      z-index: 20;
       inset: -10%;
       border-radius: inherit;
       pointer-events: none;
@@ -230,81 +257,107 @@
       filter: blur(var(--v3-material-blur));
       mix-blend-mode: var(--v3-material-blend);
 
-      /*
-        Broad fields are pulled back so the material returns to a
-        predominantly dark state. A few smaller asymmetric regions keep
-        the richer blue "tells" that create selective brilliance.
-
-        Blur remains 0 and blend mode remains normal for this pass.
-      */
       background:
         radial-gradient(
-          84% 148% at 6% 35%,
-          rgba(85, 146, 255, 0.218) 0%,
-          rgba(44, 98, 210, 0.102) 31%,
-          rgba(10, 33, 92, 0) 68%
+          86% 144% at 7% 36%,
+          rgba(69, 130, 246, 0.17) 0%,
+          rgba(35, 84, 190, 0.078) 32%,
+          rgba(9, 30, 84, 0) 69%
         ),
         radial-gradient(
-          60% 121% at 77% 7%,
-          rgba(68, 128, 249, 0.193) 0%,
-          rgba(32, 77, 186, 0.082) 37%,
-          rgba(8, 28, 80, 0) 73%
+          64% 118% at 76% 8%,
+          rgba(59, 119, 239, 0.15) 0%,
+          rgba(28, 70, 174, 0.064) 38%,
+          rgba(8, 28, 79, 0) 74%
         ),
         radial-gradient(
-          100% 80% at 77% 106%,
-          rgba(46, 108, 237, 0.182) 0%,
-          rgba(22, 64, 170, 0.087) 36%,
-          rgba(6, 25, 73, 0) 71%
+          102% 80% at 77% 106%,
+          rgba(43, 103, 230, 0.14) 0%,
+          rgba(20, 61, 162, 0.064) 37%,
+          rgba(6, 25, 73, 0) 72%
         ),
-        radial-gradient(
-          74% 107% at 41% 63%,
-          rgba(27, 73, 185, 0.118) 0%,
-          rgba(11, 37, 108, 0.049) 44%,
-          rgba(5, 21, 65, 0) 76%
-        ),
-
-        /* Localized brilliance retained intentionally. */
-        radial-gradient(
-          46% 84% at 23% 18%,
-          rgba(74, 139, 255, 0.16) 0%,
-          rgba(31, 82, 207, 0.065) 42%,
-          rgba(8, 30, 87, 0) 76%
-        ),
-        radial-gradient(
-          34% 66% at 69% 31%,
-          rgba(61, 123, 246, 0.115) 0%,
-          rgba(28, 70, 186, 0.043) 43%,
-          rgba(8, 29, 83, 0) 78%
-        ),
-
         linear-gradient(
           114deg,
           rgba(8, 27, 77, 0) 0%,
           rgba(8, 27, 77, 0) 21%,
-          rgba(87, 137, 244, 0.057) 34%,
-          rgba(39, 84, 184, 0.029) 48%,
-          rgba(8, 27, 77, 0) 65%,
+          rgba(72, 121, 225, 0.045) 35%,
+          rgba(34, 76, 173, 0.022) 49%,
+          rgba(8, 27, 77, 0) 66%,
           rgba(8, 27, 77, 0) 100%
-        ),
-        linear-gradient(
-          180deg,
-          rgba(22, 61, 157, 0.040) 0%,
-          rgba(8, 29, 83, 0.015) 28%,
-          rgba(6, 22, 63, 0.010) 58%,
-          rgba(16, 48, 137, 0.035) 100%
         );
     }
 
     /* ---------------------------------------------------------
-       RESERVED TRAVELING-LIGHT LAYER
+       DOMINANT DARK-FIELD OCCLUSION
 
-       Intentionally dormant in this static specimen. The element is
-       retained now so the future scan can be added without changing
-       the button's structural layer model.
+       Darkness is now an explicit sculpting layer. It covers most of
+       the perceived surface while remaining chromatically blue rather
+       than true black.
+
+       Blur is currently 0px. If later used, it is intended only for
+       edge integration — not atmospheric haze.
+       --------------------------------------------------------- */
+    .btn-dark-field {
+      position: absolute;
+      z-index: 30;
+      inset: -10%;
+      border-radius: inherit;
+      pointer-events: none;
+
+      opacity: var(--v3-dark-opacity);
+      filter: blur(var(--v3-dark-blur));
+      mix-blend-mode: var(--v3-dark-blend);
+
+      background:
+        radial-gradient(
+          118% 116% at 72% 63%,
+          rgba(3, 12, 38, 0.70) 0%,
+          rgba(4, 15, 45, 0.61) 34%,
+          rgba(5, 20, 58, 0.16) 63%,
+          rgba(6, 24, 68, 0) 82%
+        ),
+        radial-gradient(
+          90% 104% at 17% 76%,
+          rgba(3, 13, 40, 0.66) 0%,
+          rgba(4, 16, 48, 0.54) 37%,
+          rgba(5, 21, 61, 0.13) 67%,
+          rgba(6, 24, 70, 0) 84%
+        ),
+        radial-gradient(
+          72% 82% at 87% 22%,
+          rgba(4, 15, 44, 0.56) 0%,
+          rgba(5, 19, 55, 0.38) 40%,
+          rgba(6, 24, 69, 0) 78%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(4, 15, 44, 0.08) 0%,
+          rgba(3, 13, 39, 0.20) 38%,
+          rgba(3, 12, 36, 0.34) 72%,
+          rgba(3, 12, 36, 0.42) 100%
+        );
+    }
+
+    /* ---------------------------------------------------------
+       RESERVED FUTURE TRAVELING-LIGHT LAYER
+
+       Dormant in this static specimen.
+
+       Future invariant:
+       the scan may be visible ONLY at the perimeter. No scan light is
+       ever permitted to pass through the button interior.
+
+       Depth-ladder experiment:
+       --v3-scan-z: 5   = behind brilliance
+       --v3-scan-z: 15  = between brilliance and submerged fields
+       --v3-scan-z: 25  = between submerged fields and dark field
+       --v3-scan-z: 35  = between dark field and perimeter
+
+       Same scan. Same geometry. Same timing. Only depth changes.
        --------------------------------------------------------- */
     .btn-energy {
       position: absolute;
-      z-index: 2;
+      z-index: var(--v3-scan-z);
       inset: -10%;
       border-radius: inherit;
       pointer-events: none;
@@ -316,16 +369,38 @@
     }
 
     /* ---------------------------------------------------------
-       SURFACE RESPONSE
+       PERIMETER FILAMENT
 
-       The lower-right fixed reflection has intentionally been removed.
-       The top-left highlight remains provisionally for the static
-       calibration specimen.
+       Static full-illumination calibration state. The 2px cobalt ring
+       and its darker inner support remain unchanged for now.
+       --------------------------------------------------------- */
+    .btn::after {
+      content: "";
+      position: absolute;
+      z-index: 40;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+
+      box-shadow:
+        inset 0 0 0 2px rgba(27, 154, 255, 0.96),
+        inset 0 0 0 3px rgba(4, 25, 84, 0.68),
+        inset 0 0 9px rgba(29, 132, 255, 0.24),
+        0 0 11px rgba(29, 135, 255, 0.27),
+        0 0 19px rgba(29, 135, 255, 0.10);
+    }
+
+    /* ---------------------------------------------------------
+       SPECULAR SURFACE RESPONSE
+
+       Surface event sits above the internal material and perimeter.
+       The lower-right fixed reflection remains intentionally absent.
+       The top-left event remains provisional for the static specimen.
        --------------------------------------------------------- */
     .btn::before {
       content: "";
       position: absolute;
-      z-index: 3;
+      z-index: 50;
       inset: 2px;
       border-radius: inherit;
       pointer-events: none;
@@ -353,36 +428,9 @@
         );
     }
 
-    /* ---------------------------------------------------------
-       FULL-ILLUMINATION COBALT PERIMETER
-
-       This is the calibration ceiling, not yet the proposed V3 rest
-       state. No permanent lower-right flare is present.
-       --------------------------------------------------------- */
-    .btn::after {
-      content: "";
-      position: absolute;
-      z-index: 4;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
-
-      /*
-        The 2px cobalt ring remains unchanged. A darker 3px inset sits
-        behind it, leaving roughly a 1px inner lip that preserves a
-        crisp ring/material boundary as the interior gains richer blue.
-      */
-      box-shadow:
-        inset 0 0 0 2px rgba(27, 154, 255, 0.96),
-        inset 0 0 0 3px rgba(4, 25, 84, 0.68),
-        inset 0 0 9px rgba(29, 132, 255, 0.24),
-        0 0 11px rgba(29, 135, 255, 0.27),
-        0 0 19px rgba(29, 135, 255, 0.10);
-    }
-
     .btn-label {
       position: relative;
-      z-index: 5;
+      z-index: 60;
       color: rgba(255, 255, 255, 0.98);
       text-shadow:
         0 1px 2px rgba(2, 8, 31, 0.55);
@@ -391,7 +439,7 @@
     .btn-label i {
       font-size: 17px;
       line-height: 1;
-      opacity: 1;
+      opacity: 0;
       color: rgba(255, 255, 255, 0.98);
       transform: translateX(2px);
     }
@@ -589,7 +637,9 @@
         download
         aria-label="Add to Contacts"
       >
+        <span class="btn-brilliance" aria-hidden="true"></span>
         <span class="btn-material" aria-hidden="true"></span>
+        <span class="btn-dark-field" aria-hidden="true"></span>
         <span class="btn-energy" aria-hidden="true"></span>
 
         <span class="btn-label">
