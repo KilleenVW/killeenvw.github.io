@@ -160,49 +160,50 @@
       /*
         Deep-blue substrate: never reaches true black.
 
-        TONAL EXPANSION PASS:
-        The overall surface remains overwhelmingly dark, while a few
-        broader regions carry richer blue chroma. The goal is more blue
-        information, not more white light.
+        SELECTIVE BRILLIANCE PASS:
+        Pull the overall tonal floor roughly halfway back toward the
+        darker specimen while keeping richer blue information available
+        in smaller, localized regions. The goal is darkness first,
+        brilliance second — not generalized brightening.
       */
       background:
         radial-gradient(
-          148% 128% at 15% -26%,
-          rgba(75, 139, 255, 0.38) 0%,
-          rgba(43, 94, 211, 0.20) 27%,
-          rgba(12, 37, 101, 0) 59%
+          147% 127% at 16% -25%,
+          rgba(72, 133, 255, 0.36) 0%,
+          rgba(40, 89, 203, 0.185) 27%,
+          rgba(11, 34, 93, 0) 59%
         ),
         radial-gradient(
-          112% 102% at 96% 22%,
-          rgba(45, 105, 235, 0.23) 0%,
-          rgba(22, 61, 153, 0.105) 35%,
-          rgba(7, 27, 76, 0) 67%
+          115% 99% at 94% 20%,
+          rgba(40, 99, 229, 0.21) 0%,
+          rgba(20, 55, 141, 0.092) 35%,
+          rgba(6, 23, 66, 0) 67%
         ),
         radial-gradient(
-          128% 86% at 29% 108%,
-          rgba(32, 91, 224, 0.21) 0%,
-          rgba(15, 51, 145, 0.105) 37%,
-          rgba(6, 25, 74, 0) 70%
+          133% 84% at 38% 113%,
+          rgba(29, 85, 214, 0.23) 0%,
+          rgba(14, 47, 134, 0.108) 37%,
+          rgba(5, 22, 67, 0) 70%
         ),
         radial-gradient(
-          96% 78% at 88% 104%,
-          rgba(22, 67, 183, 0.15) 0%,
-          rgba(10, 38, 114, 0.07) 39%,
-          rgba(5, 22, 66, 0) 71%
+          94% 74% at 87% 103%,
+          rgba(20, 62, 174, 0.11) 0%,
+          rgba(9, 34, 103, 0.052) 40%,
+          rgba(5, 21, 62, 0) 72%
         ),
         linear-gradient(
           180deg,
-          #1A4AB5 0%,
-          #10337E 17%,
-          #0A245A 39%,
-          #071A45 63%,
-          #061437 82%,
-          #050F2D 100%
+          #1848AE 0%,
+          #0E3077 17%,
+          #082052 39%,
+          #06163E 63%,
+          #041030 82%,
+          #040C28 100%
         );
 
       box-shadow:
         inset 0 1px 0 rgba(207, 232, 255, 0.13),
-        inset 0 -2px 4px rgba(2, 10, 38, 0.72),
+        inset 0 -2px 4px rgba(2, 9, 35, 0.73),
         0 0 0 1px rgba(34, 133, 255, 0.34),
         0 0 14px rgba(37, 133, 255, 0.18),
         0 8px 20px rgba(0, 0, 0, 0.35);
@@ -230,56 +231,67 @@
       mix-blend-mode: var(--v3-material-blend);
 
       /*
-        Overlapping asymmetric fields broaden the interior blue
-        vocabulary without turning any region into a bright "patch."
+        Broad fields are pulled back so the material returns to a
+        predominantly dark state. A few smaller asymmetric regions keep
+        the richer blue "tells" that create selective brilliance.
+
         Blur remains 0 and blend mode remains normal for this pass.
       */
       background:
         radial-gradient(
-          82% 146% at 5% 33%,
-          rgba(91, 153, 255, 0.245) 0%,
-          rgba(48, 105, 218, 0.12) 30%,
-          rgba(12, 37, 101, 0) 68%
+          84% 148% at 6% 35%,
+          rgba(85, 146, 255, 0.218) 0%,
+          rgba(44, 98, 210, 0.102) 31%,
+          rgba(10, 33, 92, 0) 68%
         ),
         radial-gradient(
-          57% 118% at 76% 5%,
-          rgba(73, 134, 252, 0.215) 0%,
-          rgba(34, 82, 194, 0.095) 37%,
-          rgba(9, 31, 87, 0) 73%
+          60% 121% at 77% 7%,
+          rgba(68, 128, 249, 0.193) 0%,
+          rgba(32, 77, 186, 0.082) 37%,
+          rgba(8, 28, 80, 0) 73%
         ),
         radial-gradient(
-          96% 78% at 78% 105%,
-          rgba(52, 114, 240, 0.195) 0%,
-          rgba(24, 70, 180, 0.095) 36%,
-          rgba(7, 28, 81, 0) 71%
+          100% 80% at 77% 106%,
+          rgba(46, 108, 237, 0.182) 0%,
+          rgba(22, 64, 170, 0.087) 36%,
+          rgba(6, 25, 73, 0) 71%
         ),
         radial-gradient(
-          72% 104% at 39% 65%,
-          rgba(34, 83, 202, 0.135) 0%,
-          rgba(13, 43, 122, 0.058) 44%,
-          rgba(6, 24, 72, 0) 76%
+          74% 107% at 41% 63%,
+          rgba(27, 73, 185, 0.118) 0%,
+          rgba(11, 37, 108, 0.049) 44%,
+          rgba(5, 21, 65, 0) 76%
         ),
+
+        /* Localized brilliance retained intentionally. */
         radial-gradient(
-          48% 90% at 24% 19%,
+          46% 84% at 23% 18%,
           rgba(74, 139, 255, 0.16) 0%,
           rgba(31, 82, 207, 0.065) 42%,
           rgba(8, 30, 87, 0) 76%
         ),
+        radial-gradient(
+          34% 66% at 69% 31%,
+          rgba(61, 123, 246, 0.115) 0%,
+          rgba(28, 70, 186, 0.043) 43%,
+          rgba(8, 29, 83, 0) 78%
+        ),
+
         linear-gradient(
-          116deg,
-          rgba(8, 29, 83, 0) 0%,
-          rgba(8, 29, 83, 0) 20%,
-          rgba(84, 136, 246, 0.068) 34%,
-          rgba(41, 89, 194, 0.035) 48%,
-          rgba(8, 29, 83, 0) 65%,
-          rgba(8, 29, 83, 0) 100%
+          114deg,
+          rgba(8, 27, 77, 0) 0%,
+          rgba(8, 27, 77, 0) 21%,
+          rgba(87, 137, 244, 0.057) 34%,
+          rgba(39, 84, 184, 0.029) 48%,
+          rgba(8, 27, 77, 0) 65%,
+          rgba(8, 27, 77, 0) 100%
         ),
         linear-gradient(
           180deg,
-          rgba(24, 66, 170, 0.075) 0%,
-          rgba(9, 32, 92, 0.025) 28%,
-          rgba(6, 24, 69, 0.015) 58%,
-          rgba(18, 54, 151, 0.065) 100%
+          rgba(22, 61, 157, 0.040) 0%,
+          rgba(8, 29, 83, 0.015) 28%,
+          rgba(6, 22, 63, 0.010) 58%,
+          rgba(16, 48, 137, 0.035) 100%
         );
     }
 
