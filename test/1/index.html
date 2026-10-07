@@ -157,39 +157,52 @@
       font-weight: 500;
       color: var(--echo-soft-white);
 
-      /* Deep-blue substrate: never reaches true black. */
+      /*
+        Deep-blue substrate: never reaches true black.
+
+        TONAL EXPANSION PASS:
+        The overall surface remains overwhelmingly dark, while a few
+        broader regions carry richer blue chroma. The goal is more blue
+        information, not more white light.
+      */
       background:
         radial-gradient(
-          145% 125% at 18% -24%,
-          rgba(69, 127, 255, 0.34) 0%,
-          rgba(37, 83, 195, 0.17) 28%,
-          rgba(9, 30, 85, 0) 58%
+          148% 128% at 15% -26%,
+          rgba(75, 139, 255, 0.38) 0%,
+          rgba(43, 94, 211, 0.20) 27%,
+          rgba(12, 37, 101, 0) 59%
         ),
         radial-gradient(
-          118% 96% at 92% 18%,
-          rgba(35, 92, 222, 0.19) 0%,
-          rgba(18, 49, 128, 0.08) 34%,
-          rgba(5, 18, 55, 0) 66%
+          112% 102% at 96% 22%,
+          rgba(45, 105, 235, 0.23) 0%,
+          rgba(22, 61, 153, 0.105) 35%,
+          rgba(7, 27, 76, 0) 67%
         ),
         radial-gradient(
-          138% 82% at 48% 118%,
-          rgba(25, 78, 204, 0.25) 0%,
-          rgba(12, 42, 123, 0.11) 36%,
-          rgba(4, 19, 59, 0) 68%
+          128% 86% at 29% 108%,
+          rgba(32, 91, 224, 0.21) 0%,
+          rgba(15, 51, 145, 0.105) 37%,
+          rgba(6, 25, 74, 0) 70%
+        ),
+        radial-gradient(
+          96% 78% at 88% 104%,
+          rgba(22, 67, 183, 0.15) 0%,
+          rgba(10, 38, 114, 0.07) 39%,
+          rgba(5, 22, 66, 0) 71%
         ),
         linear-gradient(
           180deg,
-          #1645A8 0%,
-          #0C2C70 17%,
-          #071B4A 39%,
-          #041337 63%,
-          #030D29 82%,
-          #020A22 100%
+          #1A4AB5 0%,
+          #10337E 17%,
+          #0A245A 39%,
+          #071A45 63%,
+          #061437 82%,
+          #050F2D 100%
         );
 
       box-shadow:
         inset 0 1px 0 rgba(207, 232, 255, 0.13),
-        inset 0 -2px 4px rgba(2, 8, 33, 0.74),
+        inset 0 -2px 4px rgba(2, 10, 38, 0.72),
         0 0 0 1px rgba(34, 133, 255, 0.34),
         0 0 14px rgba(37, 133, 255, 0.18),
         0 8px 20px rgba(0, 0, 0, 0.35);
@@ -216,39 +229,57 @@
       filter: blur(var(--v3-material-blur));
       mix-blend-mode: var(--v3-material-blend);
 
+      /*
+        Overlapping asymmetric fields broaden the interior blue
+        vocabulary without turning any region into a bright "patch."
+        Blur remains 0 and blend mode remains normal for this pass.
+      */
       background:
         radial-gradient(
-          86% 150% at 7% 36%,
-          rgba(78, 139, 255, 0.19) 0%,
-          rgba(40, 91, 201, 0.085) 31%,
-          rgba(9, 29, 82, 0) 67%
+          82% 146% at 5% 33%,
+          rgba(91, 153, 255, 0.245) 0%,
+          rgba(48, 105, 218, 0.12) 30%,
+          rgba(12, 37, 101, 0) 68%
         ),
         radial-gradient(
-          62% 125% at 77% 8%,
-          rgba(62, 121, 245, 0.17) 0%,
-          rgba(29, 72, 177, 0.07) 37%,
-          rgba(7, 25, 72, 0) 73%
+          57% 118% at 76% 5%,
+          rgba(73, 134, 252, 0.215) 0%,
+          rgba(34, 82, 194, 0.095) 37%,
+          rgba(9, 31, 87, 0) 73%
         ),
         radial-gradient(
-          104% 82% at 76% 106%,
-          rgba(39, 101, 233, 0.17) 0%,
-          rgba(19, 58, 160, 0.08) 36%,
-          rgba(5, 21, 65, 0) 70%
+          96% 78% at 78% 105%,
+          rgba(52, 114, 240, 0.195) 0%,
+          rgba(24, 70, 180, 0.095) 36%,
+          rgba(7, 28, 81, 0) 71%
         ),
         radial-gradient(
-          76% 110% at 43% 62%,
-          rgba(20, 62, 168, 0.10) 0%,
-          rgba(8, 31, 94, 0.04) 43%,
-          rgba(4, 18, 57, 0) 75%
+          72% 104% at 39% 65%,
+          rgba(34, 83, 202, 0.135) 0%,
+          rgba(13, 43, 122, 0.058) 44%,
+          rgba(6, 24, 72, 0) 76%
+        ),
+        radial-gradient(
+          48% 90% at 24% 19%,
+          rgba(74, 139, 255, 0.16) 0%,
+          rgba(31, 82, 207, 0.065) 42%,
+          rgba(8, 30, 87, 0) 76%
         ),
         linear-gradient(
-          112deg,
-          rgba(7, 23, 65, 0) 0%,
-          rgba(7, 23, 65, 0) 22%,
-          rgba(90, 138, 239, 0.045) 34%,
-          rgba(36, 78, 174, 0.024) 47%,
-          rgba(7, 23, 65, 0) 64%,
-          rgba(7, 23, 65, 0) 100%
+          116deg,
+          rgba(8, 29, 83, 0) 0%,
+          rgba(8, 29, 83, 0) 20%,
+          rgba(84, 136, 246, 0.068) 34%,
+          rgba(41, 89, 194, 0.035) 48%,
+          rgba(8, 29, 83, 0) 65%,
+          rgba(8, 29, 83, 0) 100%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(24, 66, 170, 0.075) 0%,
+          rgba(9, 32, 92, 0.025) 28%,
+          rgba(6, 24, 69, 0.015) 58%,
+          rgba(18, 54, 151, 0.065) 100%
         );
     }
 
@@ -324,9 +355,14 @@
       border-radius: inherit;
       pointer-events: none;
 
+      /*
+        The 2px cobalt ring remains unchanged. A darker 3px inset sits
+        behind it, leaving roughly a 1px inner lip that preserves a
+        crisp ring/material boundary as the interior gains richer blue.
+      */
       box-shadow:
         inset 0 0 0 2px rgba(27, 154, 255, 0.96),
-        inset 0 0 0 3px rgba(8, 39, 124, 0.30),
+        inset 0 0 0 3px rgba(4, 25, 84, 0.68),
         inset 0 0 9px rgba(29, 132, 255, 0.24),
         0 0 11px rgba(29, 135, 255, 0.27),
         0 0 19px rgba(29, 135, 255, 0.10);
