@@ -1,1 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
 
+N:Navarro;Natalie;;;
+FN:Natalie Navarro
+
+ORG:Killeen Volkswagen
+TITLE:Finance Manager
+
+TEL;TYPE=CELL:8329080809
+
+EMAIL:nnavarro@killeenauto.com
+
+URL:https://killeenvw.github.io/natalie
+URL:https://www.vw.com/
+
+ADR;TYPE=WORK:;;3221 East Central Texas Expressway;Killeen;TX;76543;USA
+
+NOTE:Your Volkswagen Specialist at Killeen Volkswagen.
+
+END:VCARD
