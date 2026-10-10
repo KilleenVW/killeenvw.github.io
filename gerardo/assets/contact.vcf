@@ -1,1 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
 
+N:Holguin;Gerardo;;;
+FN:Gerardo Holguin
+
+ORG:Killeen Volkswagen
+TITLE:Sales Consultant
+
+TEL;TYPE=CELL:2547688277
+
+EMAIL:gholguin@killeenauto.com
+
+URL:https://killeenvw.github.io/gerardo
+URL:https://www.vw.com/
+
+ADR;TYPE=WORK:;;3221 East Central Texas Expressway;Killeen;TX;76543;USA
+
+NOTE:Your Volkswagen Specialist at Killeen Volkswagen.
+
+END:VCARD
