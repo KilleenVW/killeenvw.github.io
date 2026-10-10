@@ -226,34 +226,53 @@
       mix-blend-mode: var(--v3-brilliance-blend);
 
       background:
+        /* P1 — lower-left support
+           Size: 2.5
+           Luminosity: low-medium */
         radial-gradient(
           30% 48% at 7% 73%,
-          rgba(89, 156, 255, 0.22) 0%,
-          rgba(49, 111, 231, 0.11) 34%,
+          rgba(89, 156, 255, 0.18) 0%,
+          rgba(49, 111, 231, 0.09) 34%,
           rgba(12, 39, 105, 0) 72%
         ),
+
+        /* P2 — upper-left interior
+           Size: 2
+           Luminosity: highest */
         radial-gradient(
           38% 58% at 28% 23%,
           rgba(96, 164, 255, 0.30) 0%,
-          rgba(53, 118, 236, 0.16) 34%,
+          rgba(53, 118, 236, 0.15) 34%,
           rgba(12, 39, 105, 0) 72%
         ),
+
+        /* P3 — center-right whisper
+           Size: 1
+           Luminosity: very low */
         radial-gradient(
           16% 24% at 63% 56%,
-          rgba(86, 151, 255, 0.24) 0%,
-          rgba(44, 102, 224, 0.11) 36%,
+          rgba(86, 151, 255, 0.13) 0%,
+          rgba(44, 102, 224, 0.06) 36%,
           rgba(12, 39, 105, 0) 74%
         ),
+
+        /* P4 — upper-right territorial anchor
+           Size: 3
+           Luminosity: second-highest */
         radial-gradient(
           46% 68% at 80% 24%,
-          rgba(93, 160, 255, 0.34) 0%,
-          rgba(50, 113, 233, 0.18) 34%,
+          rgba(93, 160, 255, 0.26) 0%,
+          rgba(50, 113, 233, 0.13) 34%,
           rgba(12, 39, 105, 0) 72%
         ),
+
+        /* P5 — rogue continuation cue
+           Size: 1.5
+           Luminosity: lowest */
         radial-gradient(
           22% 34% at 101% 42%,
-          rgba(90, 157, 255, 0.24) 0%,
-          rgba(46, 106, 227, 0.12) 36%,
+          rgba(90, 157, 255, 0.11) 0%,
+          rgba(46, 106, 227, 0.05) 36%,
           rgba(12, 39, 105, 0) 74%
         );
     }
@@ -426,22 +445,22 @@
       background:
         radial-gradient(
           58px 22px at 8% 9%,
-          rgba(246, 252, 255, 0.90) 0%,
-          rgba(166, 221, 255, 0.58) 8%,
-          rgba(93, 167, 255, 0.18) 22%,
+          rgba(246, 252, 255, 0.50) 0%,
+          rgba(166, 221, 255, 0.28) 8%,
+          rgba(93, 167, 255, 0.10) 22%,
           rgba(18, 53, 123, 0) 48%
         ),
         linear-gradient(
           180deg,
-          rgba(225, 240, 255, 0.14) 0%,
-          rgba(140, 188, 255, 0.07) 11%,
-          rgba(38, 86, 181, 0.025) 24%,
+          rgba(225, 240, 255, 0.08) 0%,
+          rgba(140, 188, 255, 0.04) 11%,
+          rgba(38, 86, 181, 0.015) 24%,
           rgba(4, 20, 61, 0) 43%
         ),
         radial-gradient(
           132% 76% at 48% 112%,
-          rgba(35, 105, 244, 0.18) 0%,
-          rgba(19, 61, 164, 0.08) 36%,
+          rgba(35, 105, 244, 0.10) 0%,
+          rgba(19, 61, 164, 0.045) 36%,
           rgba(5, 22, 67, 0) 69%
         );
     }
