@@ -1,0 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
+
+N:Taylor;Darryl;;;
+FN:Darryl Taylor
+
+ORG:Killeen Volkswagen
+TITLE:Sales Manager
+
+TEL;TYPE=CELL:4042001177
+
+EMAIL:dtaylor@killeenauto.com
+
+URL:https://killeenvw.github.io/natalie
+URL:https://www.vw.com/
+
+ADR;TYPE=WORK:;;3221 East Central Texas Expressway;Killeen;TX;76543;USA
+
+NOTE:Your Volkswagen Specialist at Killeen Volkswagen.
+
+END:VCARD
