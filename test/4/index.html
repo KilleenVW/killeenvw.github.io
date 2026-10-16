@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+
+  <title>Raymond | Volkswagen Specialist</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+  <style>
+    :root {
+      --bg-image: url("JettaGLIBG.jpg");
+      --echo-light-blue: #6996C7;
+      --echo-soft-white: #F7F5F2;
+      --manila: #E7DCB6;
+      --card-bg: rgba(0, 0, 0, 0.50);
+      --page-overlay: rgba(0, 0, 0, 0.11);
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Times New Roman", serif;
+      background: var(--bg-image) center / cover no-repeat fixed;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--page-overlay);
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      width: 100%;
+      max-width: 420px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card {
+      padding: 33px 67px 70px;
+      margin: 0 8px;
+      background: var(--card-bg);
+      border-radius: 18px;
+      backdrop-filter: blur(2px);
+      text-align: center;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 1);
+      transform: translateY(-15px);
+    }
+
+    .name {
+      margin: 0;
+      font-family: "Alex Brush", cursive;
+      font-size: 46px;
+      font-weight: 400;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      color: var(--echo-soft-white);
+      text-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.10),
+        0 1px 2px rgba(0, 0, 0, 0.14);
+    }
+
+    /* =========================================================
+       TEST/3 PRODUCTION-HYBRID LAB
+
+       Active baseline:
+       - test/3 body retained
+       - absolute #000000 floor retained
+       - restrained test/3 perimeter retained
+       - icon retained at .80
+       - upper material response strengthened/concentrated
+
+       Optional test/1 imports are present but OFF.
+       ========================================================= */
+    .btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: inline-block;
+      width: auto;
+      min-width: 100px;
+      max-width: 70%;
+      padding: 9px 22px;
+      margin: 36px auto 14px;
+      border: none;
+      border-radius: 30px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--echo-soft-white);
+
+      background:
+        radial-gradient(
+          140% 120% at 50% 0%,
+          rgba(64, 118, 255, 0.40) 0%,
+          rgba(30, 72, 194, 0.18) 18%,
+          rgba(8, 20, 65, 0) 48%
+        ),
+        linear-gradient(
+          180deg,
+          #245ddd 0%,
+          #173d9f 12%,
+          #0a2253 34%,
+          #040d2b 60%,
+          #000000 100%
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.72),
+        0 0 0 1px rgba(34, 133, 255, 0.35),
+        0 0 14px rgba(37, 133, 255, 0.18),
+        0 8px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ACTIVE: clearer, more concentrated upper material response */
+    .btn::before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        inset: 2px;
+        height: 36%;
+        border-radius: inherit;
+        pointer-events: none;
+        filter: blur(5px);
+
+        background:
+          radial-gradient(
+            58px 18px at 8% 9%,
+            rgba(238, 247, 255, 1.00) 0%,
+            rgba(164, 207, 255, 0.48) 10%,
+            rgba(91, 156, 248, 0.18) 24%,
+            rgba(20, 55, 132, 0) 47%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(214, 233, 255, 0.24) 0%,
+            rgba(121, 172, 250, 0.10) 10%,
+            rgba(39, 88, 188, 0) 26%
+          ),
+          radial-gradient(
+            120% 85% at 50% 105%,
+            rgba(30, 104, 242, 0.19) 0%,
+            rgba(16, 56, 174, 0.09) 30%,
+            rgba(0, 0, 0, 0) 60%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) 72%,
+            rgba(27, 96, 230, 0.18) 84%,
+            rgba(64, 132, 246, 0.48) 94%,
+            rgba(18, 66, 198, 0.28) 100%
+          );
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      z-index: 3;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      box-shadow:
+        inset 0 0 0 1px rgba(35, 160, 255, 0.96),
+        inset 0 0 0 2px rgba(4, 25, 84, 0.68),
+        inset 0 0 9px rgba(29, 132, 255, 0.24),
+        0 0 11px rgba(29, 135, 255, 0.27),
+        0 0 19px rgba(29, 135, 255, 0.10);
+    }
+
+    /* =========================================================
+       PRODUCTION-CANDIDATE EVENTS — INSTALLED, COMMENTED OUT
+
+       These are written exactly as they would remain if accepted.
+       There is no display:none switchboard and no alternate test-only
+       declaration. To test an event, remove only the surrounding
+       block-comment markers. If rejected, delete the block entirely.
+
+       No lower-right ring flare is present.
+       ========================================================= */
+
+    /* ---------------------------------------------------------
+       TOP-LEFT RING / SURFACE FLARE
+       Imported from the current test/1 specular event.
+       --------------------------------------------------------- */
+
+    /*
+    .btn-ring-flare {
+      position: absolute;
+      z-index: 5;
+      inset: 2px;
+      border-radius: inherit;
+      pointer-events: none;
+
+      background:
+        radial-gradient(
+          58px 22px at 8% 9%,
+          rgba(246, 252, 255, 0.50) 0%,
+          rgba(166, 221, 255, 0.28) 8%,
+          rgba(93, 167, 255, 0.10) 22%,
+          rgba(18, 53, 123, 0) 48%
+        );
+    }
+    */
+
+    /* ---------------------------------------------------------
+       P2 — SINGLE BURIED BRILLIANCE EVENT
+       Current test/1 P2 foundation specimen.
+       --------------------------------------------------------- */
+
+    /*
+    .btn-brilliance-p2 {
+      position: absolute;
+      z-index: 1;
+      inset: -10%;
+      border-radius: inherit;
+      pointer-events: none;
+
+      opacity: 1;
+      filter: blur(0);
+      mix-blend-mode: normal;
+
+      background:
+        radial-gradient(
+          28.5% 36% at 28% 23%,
+          rgba(44, 128, 255, 0.76) 0%,
+          rgba(26, 88, 238, 0.38) 34%,
+          rgba(12, 39, 105, 0) 72%
+        );
+    }
+    */
+
+    /* ---------------------------------------------------------
+       P3 — SINGLE BURIED BRILLIANCE EVENT
+       Current test/1 enlarged lower-interior/right support specimen.
+       --------------------------------------------------------- */
+
+    /*
+    .btn-brilliance-p3 {
+      position: absolute;
+      z-index: 1;
+      inset: -10%;
+      border-radius: inherit;
+      pointer-events: none;
+
+      opacity: 1;
+      filter: blur(0);
+      mix-blend-mode: normal;
+
+      background:
+        radial-gradient(
+          19.8% 17.6% at 64% 72%,
+          rgba(72, 150, 255, 0.58) 0%,
+          rgba(32, 96, 231, 0.28) 34%,
+          rgba(12, 39, 105, 0) 72%
+        );
+    }
+    */
+
+    .btn-label {
+      position: relative;
+      z-index: 6;
+      color: rgba(255, 255, 255, 0.98);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .btn-label i {
+      font-size: 17px;
+      line-height: 1;
+      opacity: 0.85;
+      color: rgba(255, 255, 255, 0.98);
+      transform: translateX(2px);
+    }
+
+    .icon-row {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 26px;
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.24);
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+    }
+
+    .phone { color: #25D366; }
+    .message { color: var(--echo-light-blue); }
+    .email { color: var(--manila); }
+
+    .brand-footer {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .brand-footer a { display: inline-flex; }
+    .brand-signature {
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+
+    .disclaimer-button {
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      z-index: 10;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 50%;
+      background: rgba(36, 56, 95, 0.72);
+      color: var(--echo-soft-white);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      cursor: pointer;
+    }
+
+    .disclaimer-button i { font-size: 12px; }
+    .disclaimer-button:focus-visible {
+      outline: 2px solid var(--echo-soft-white);
+      outline-offset: 2px;
+    }
+
+    .disclaimer-panel {
+      position: fixed;
+      right: 10px;
+      bottom: 48px;
+      z-index: 11;
+      width: min(320px, calc(100vw - 20px));
+      box-sizing: border-box;
+      padding: 16px 38px 16px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 14px;
+      background: rgba(36, 56, 95, 0.96);
+      color: var(--echo-soft-white);
+      text-align: left;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.38);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .disclaimer-panel[hidden] { display: none; }
+    .disclaimer-panel h2 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .disclaimer-panel p {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: rgba(247, 245, 242, 0.88);
+    }
+
+    .disclaimer-close {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      width: 26px;
+      height: 26px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--echo-soft-white);
+      font-size: 20px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .disclaimer-close:focus-visible {
+      outline: 2px solid var(--echo-soft-white);
+      outline-offset: 1px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="overlay"></div>
+
+  <main class="container">
+    <div class="card">
+      <h1 class="name">Raymond</h1>
+
+      <a
+        class="btn"
+        id="contactButton"
+        href="contact.vcf"
+        download
+        aria-label="Add to Contacts"
+      >
+        <span class="btn-brilliance-p2" aria-hidden="true"></span>
+        <span class="btn-brilliance-p3" aria-hidden="true"></span>
+        <span class="btn-ring-flare" aria-hidden="true"></span>
+
+        <span class="btn-label">
+          <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+        </span>
+      </a>
+
+      <div class="icon-row">
+        <a class="icon phone" href="tel:7276312950" aria-label="Call Raymond">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+        </a>
+
+        <a class="icon message" href="sms:7276312950" aria-label="Text Raymond">
+          <i class="fa-solid fa-message" aria-hidden="true"></i>
+        </a>
+
+        <a class="icon email" href="mailto:raymondcjr.vw@gmail.com" aria-label="Email Raymond">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+        </a>
+      </div>
+
+      <div class="brand-footer">
+        <a href="https://www.vw.com" target="_blank" rel="noopener noreferrer" aria-label="Visit the official Volkswagen website">
+          <img class="brand-signature" src="VW-logo-white.svg" alt="Volkswagen" />
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <button
+    class="disclaimer-button"
+    id="disclaimerButton"
+    type="button"
+    aria-label="Page information and disclaimer"
+    aria-expanded="false"
+    aria-controls="disclaimerPanel"
+  >
+    <i class="fa-solid fa-info" aria-hidden="true"></i>
+  </button>
+
+  <aside
+    class="disclaimer-panel"
+    id="disclaimerPanel"
+    role="dialog"
+    aria-labelledby="disclaimerTitle"
+    hidden
+  >
+    <button class="disclaimer-close" id="disclaimerClose" type="button" aria-label="Close disclaimer">&times;</button>
+    <h2 id="disclaimerTitle">Independent Salesperson Page</h2>
+    <p>
+      This independently created and maintained personal contact page is for a
+      Killeen Volkswagen sales professional and is not an official website of
+      Killeen Volkswagen or Volkswagen of America. Volkswagen trademarks and
+      logos are the property of their respective owners. The Volkswagen link
+      directs to the official Volkswagen website.
+    </p>
+  </aside>
+
+  <script>
+    const contactButton = document.getElementById("contactButton");
+
+    contactButton.addEventListener("click", () => {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(11);
+      }
+    });
+
+    const disclaimerButton = document.getElementById("disclaimerButton");
+    const disclaimerPanel = document.getElementById("disclaimerPanel");
+    const disclaimerClose = document.getElementById("disclaimerClose");
+
+    function openDisclaimer() {
+      disclaimerPanel.hidden = false;
+      disclaimerButton.setAttribute("aria-expanded", "true");
+      disclaimerClose.focus();
+    }
+
+    function closeDisclaimer(returnFocus = true) {
+      disclaimerPanel.hidden = true;
+      disclaimerButton.setAttribute("aria-expanded", "false");
+      if (returnFocus) disclaimerButton.focus();
+    }
+
+    disclaimerButton.addEventListener("click", () => {
+      if (disclaimerPanel.hidden) openDisclaimer();
+      else closeDisclaimer();
+    });
+
+    disclaimerClose.addEventListener("click", () => closeDisclaimer());
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && !disclaimerPanel.hidden) {
+        closeDisclaimer();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (
+        !disclaimerPanel.hidden &&
+        !disclaimerPanel.contains(event.target) &&
+        !disclaimerButton.contains(event.target)
+      ) {
+        closeDisclaimer(false);
+      }
+    });
+  </script>
+</body>
+</html>
