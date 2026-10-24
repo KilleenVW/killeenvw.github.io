@@ -71,18 +71,7 @@
         0 1px 2px rgba(0, 0, 0, 0.14);
     }
 
-    /* =========================================================
-       TEST/3 PRODUCTION-HYBRID LAB
-
-       Active baseline:
-       - test/3 body retained
-       - absolute #000000 floor retained
-       - restrained test/3 perimeter retained
-       - icon retained at .80
-       - upper material response strengthened/concentrated
-
-       Optional test/1 imports are present but OFF.
-       ========================================================= */
+    /* = PRIMARY ACTION — ADD TO CONTACTS = */
     .btn {
       position: relative;
       isolation: isolate;
@@ -124,7 +113,7 @@
         0 8px 20px rgba(0, 0, 0, 0.35);
     }
 
-    /* ACTIVE: clearer, more concentrated upper material response */
+    /* BUTTON UPPER MATERIAL RESPONSE */
     .btn::before {
         content: "";
         position: absolute;
@@ -169,6 +158,7 @@
           );
     }
 
+    /* BUTTON EDGE TREATMENT */
     .btn::after {
       content: "";
       position: absolute;
@@ -184,95 +174,7 @@
         0 0 19px rgba(29, 135, 255, 0.10);
     }
 
-    /* =========================================================
-       PRODUCTION-CANDIDATE EVENTS — INSTALLED, COMMENTED OUT
-
-       These are written exactly as they would remain if accepted.
-       There is no display:none switchboard and no alternate test-only
-       declaration. To test an event, remove only the surrounding
-       block-comment markers. If rejected, delete the block entirely.
-
-       No lower-right ring flare is present.
-       ========================================================= */
-
-    /* ---------------------------------------------------------
-       TOP-LEFT RING / SURFACE FLARE
-       Imported from the current test/1 specular event.
-       --------------------------------------------------------- */
-
-    /*
-    .btn-ring-flare {
-      position: absolute;
-      z-index: 5;
-      inset: 2px;
-      border-radius: inherit;
-      pointer-events: none;
-
-      background:
-        radial-gradient(
-          58px 22px at 8% 9%,
-          rgba(246, 252, 255, 0.50) 0%,
-          rgba(166, 221, 255, 0.28) 8%,
-          rgba(93, 167, 255, 0.10) 22%,
-          rgba(18, 53, 123, 0) 48%
-        );
-    }
-    */
-
-    /* ---------------------------------------------------------
-       P2 — SINGLE BURIED BRILLIANCE EVENT
-       Current test/1 P2 foundation specimen.
-       --------------------------------------------------------- */
-
-    /*
-    .btn-brilliance-p2 {
-      position: absolute;
-      z-index: 1;
-      inset: -10%;
-      border-radius: inherit;
-      pointer-events: none;
-
-      opacity: 1;
-      filter: blur(0);
-      mix-blend-mode: normal;
-
-      background:
-        radial-gradient(
-          28.5% 36% at 28% 23%,
-          rgba(44, 128, 255, 0.76) 0%,
-          rgba(26, 88, 238, 0.38) 34%,
-          rgba(12, 39, 105, 0) 72%
-        );
-    }
-    */
-
-    /* ---------------------------------------------------------
-       P3 — SINGLE BURIED BRILLIANCE EVENT
-       Current test/1 enlarged lower-interior/right support specimen.
-       --------------------------------------------------------- */
-
-    /*
-    .btn-brilliance-p3 {
-      position: absolute;
-      z-index: 1;
-      inset: -10%;
-      border-radius: inherit;
-      pointer-events: none;
-
-      opacity: 1;
-      filter: blur(0);
-      mix-blend-mode: normal;
-
-      background:
-        radial-gradient(
-          19.8% 17.6% at 64% 72%,
-          rgba(72, 150, 255, 0.58) 0%,
-          rgba(32, 96, 231, 0.28) 34%,
-          rgba(12, 39, 105, 0) 72%
-        );
-    }
-    */
-
+    /* BUTTON LABEL */
     .btn-label {
       position: relative;
       z-index: 6;
@@ -421,9 +323,6 @@
         download
         aria-label="Add to Contacts"
       >
-        <span class="btn-brilliance-p2" aria-hidden="true"></span>
-        <span class="btn-brilliance-p3" aria-hidden="true"></span>
-        <span class="btn-ring-flare" aria-hidden="true"></span>
 
         <span class="btn-label">
           <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
