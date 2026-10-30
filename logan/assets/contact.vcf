@@ -1,1 +1,21 @@
+BEGIN:VCARD
+VERSION:3.0
 
+N:Mobley;Logan;;;
+FN:Logan Mobley
+
+ORG:Killeen Volkswagen
+TITLE:Sales Consultant
+
+TEL;TYPE=CELL:7245313340
+
+EMAIL:lmobley@killeenauto.com
+
+URL:https://killeenvw.github.io/logan/
+URL:https://www.vw.com/
+
+ADR;TYPE=WORK:;;3221 East Central Texas Expressway;Killeen;TX;76543;USA
+
+NOTE:Your Volkswagen Sales Consultant at Killeen Volkswagen.
+
+END:VCARD
