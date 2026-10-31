@@ -33,7 +33,7 @@
 
       /* SALESPERSON BACKGROUND */
       --bg-image:
-        url("assets/KilleenVW.jpg");
+        url("assets/BACKGROUND-FILE.png");
 
 
       /* SHARED PALETTE */
@@ -61,7 +61,7 @@
 
       /* PAGE MATERIALS */
       --page-overlay: rgba(0,0,0,.05);
-      --card-bg: rgba(31,47,87,.55);
+      --card-bg: rgba(31,47,87,.65);
 
 
       /* ACTION MATERIALS */
@@ -78,7 +78,9 @@
     body {
       margin: 0;
       padding: 0;
+
       font-family: "Poppins", sans-serif;
+
       color: white;
 
       background:
@@ -95,8 +97,11 @@
     .overlay {
       position: fixed;
       inset: 0;
+
       z-index: 0;
+
       background: var(--page-overlay);
+
       pointer-events: none;
     }
 
@@ -106,13 +111,18 @@
        ================================================== */
     .container {
       position: relative;
+
       z-index: 1;
+
       min-height: 100vh;
       min-height: 100dvh;
+
       display: flex;
       justify-content: center;
       align-items: center;
+
       box-sizing: border-box;
+
       padding-bottom: 8px;
     }
 
@@ -123,10 +133,15 @@
     .card {
       width: 86%;
       max-width: 700px;
+
       box-sizing: border-box;
+
       padding: 32px 40px 40px;
+
       background: var(--card-bg);
+
       border-radius: 20px;
+
       text-align: center;
 
       box-shadow:
@@ -140,11 +155,14 @@
        ================================================== */
     .name {
       margin: 0;
+
       font-family: "Great Vibes", cursive;
       font-size: 52px;
       font-weight: 400;
       line-height: 1;
+
       white-space: nowrap;
+
       color: var(--pure-white);
 
       text-shadow:
@@ -173,7 +191,8 @@
 
 
     /* ==================================================
-       PRIMARY ACTION — TEST/2 BUTTON
+       PRIMARY ACTION — TEST/2 BUTTON ARCHITECTURE
+       LIGHT-BLUE SALES BASELINE
        ================================================== */
     .btn {
       position: relative;
@@ -196,9 +215,9 @@
       background:
         radial-gradient(
           140% 120% at 50% 0%,
-          rgba(108, 150, 234, .34) 0%,
-          rgba(67, 106, 199, .18) 18%,
-          rgba(30, 57, 111, 0) 48%
+          rgba(126, 166, 246, .40) 0%,
+          rgba(84, 124, 218, .20) 18%,
+          rgba(35, 65, 125, 0) 48%
         ),
         linear-gradient(
           180deg,
@@ -230,12 +249,14 @@
       filter: blur(9px);
 
       background:
-        /*radial-gradient(
+        /* DEFERRED — LOCALIZED UPPER-LEFT RESPONSE
+        radial-gradient(
           70px 24px at 8% 10%,
           rgba(255,255,255,.78) 0%,
           rgba(255,255,255,.28) 16%,
           rgba(255,255,255,0) 45%
-        ),*/
+        ),
+        */
         linear-gradient(
           180deg,
           rgba(255,255,255,.16) 0%,
@@ -244,17 +265,17 @@
         ),
         radial-gradient(
           120% 85% at 50% 105%,
-          rgba(78, 123, 210, .20) 0%,
-          rgba(45, 79, 151, .10) 30%,
+          rgba(29, 114, 255, .20) 0%,
+          rgba(15, 58, 181, .10) 30%,
           rgba(0,0,0,0) 60%
         ),
         linear-gradient(
           180deg,
           rgba(0,0,0,0) 0%,
           rgba(0,0,0,0) 72%,
-          rgba(76, 123, 211, .20) 84%,
-          rgba(126, 166, 232, .56) 94%,
-          rgba(53, 91, 174, .34) 100%
+          rgba(0, 132, 255, .22) 84%,
+          rgba(74, 200, 255, .72) 94%,
+          rgba(10, 71, 221, .40) 100%
         );
     }
 
@@ -268,20 +289,22 @@
       pointer-events: none;
       z-index: 3;
 
-      /*background:
+      /* DEFERRED — EDGE FLARE
+      background:
         radial-gradient(
           circle at 8% 10%,
           rgba(255,255,255,.90) 0%,
           rgba(149,226,255,.75) 1.5px,
           rgba(255,255,255,0) 7px
-        );*/
+        );
+      */
 
       box-shadow:
-        inset 0 0 0 1px rgba(62, 105, 184, .96),
-        inset 0 0 0 2px rgba(24, 47, 92, .64),
-        inset 0 0 9px rgba(64, 108, 190, .20),
-        0 0 10px rgba(48, 89, 162, .22),
-        0 0 18px rgba(48, 89, 162, .08);
+        inset 0 0 0 1px rgba(27, 154, 255, .96),
+        inset 0 0 0 2px rgba(7, 34, 110, .28),
+        inset 0 0 10px rgba(28, 132, 255, .22),
+        0 0 12px rgba(29, 135, 255, .28),
+        0 0 20px rgba(29, 135, 255, .10);
     }
 
 
@@ -297,15 +320,6 @@
     }
 
 
-    .btn-label i {
-      font-size: 17px;
-      line-height: 1;
-      opacity: 1;
-      color: rgba(255,255,255,.98);
-      transform: translateX(2px);
-    }
-
-
     /* ==================================================
        CONTACT / SOCIAL ACTIONS
        ================================================== */
@@ -313,7 +327,9 @@
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
+
       gap: 40px;
+
       margin-top: 28px;
     }
 
@@ -321,17 +337,25 @@
     .icon {
       width: 44px;
       height: 44px;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       padding: 0;
       margin: 0;
+
       border-radius: 10px;
+
       background: var(--icon-bg);
+
       color: #000000;
+
       font-size: 22px;
       font-weight: bold;
+
       text-decoration: none;
+
       transition: .3s;
     }
 
@@ -426,6 +450,7 @@
        ================================================== */
     .brand-footer {
       margin-top: 40px;
+
       display: flex;
       justify-content: center;
     }
@@ -439,6 +464,7 @@
     .brand-signature {
       width: 35px;
       height: 35px;
+
       display: block;
     }
 
@@ -448,15 +474,21 @@
        ================================================== */
     .disclaimer-button {
       position: fixed;
+
       right: 10px;
       bottom: 10px;
+
       z-index: 10;
+
       width: 28px;
       height: 28px;
+
       padding: 0;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
       border: 1px solid rgba(255,255,255,.45);
       border-radius: 50%;
 
@@ -489,12 +521,18 @@
        ================================================== */
     .disclaimer-panel {
       position: fixed;
+
       right: 10px;
       bottom: 48px;
+
       z-index: 11;
+
       width: min(320px, calc(100vw - 20px));
+
       box-sizing: border-box;
+
       padding: 16px 38px 16px 16px;
+
       border: 1px solid rgba(255,255,255,.22);
       border-radius: 14px;
 
@@ -518,6 +556,7 @@
 
     .disclaimer-panel h2 {
       margin: 0 0 8px;
+
       font-size: 15px;
       font-weight: 600;
       line-height: 1.3;
@@ -526,9 +565,11 @@
 
     .disclaimer-panel p {
       margin: 0;
+
       font-size: 12px;
       font-weight: 400;
       line-height: 1.5;
+
       color: rgba(255,255,255,.88);
     }
 
@@ -538,11 +579,15 @@
        ================================================== */
     .disclaimer-close {
       position: absolute;
+
       top: 7px;
       right: 7px;
+
       width: 26px;
       height: 26px;
+
       padding: 0;
+
       border: 0;
 
       background: transparent;
@@ -601,7 +646,7 @@
 
 
       <!-- ==================================================
-           PRIMARY ACTION — TEST/2 BUTTON
+           PRIMARY ACTION — SAVE CONTACT
 
            CHANGE:
            SALESPERSON NAME
@@ -611,7 +656,7 @@
         id="contactButton"
         href="assets/contact.vcf"
         download
-        aria-label="Add SALESPERSON NAME to contacts">
+        aria-label="Save SALESPERSON NAME contact">
 
         <span class="btn-label">
           Save Contact
@@ -719,7 +764,7 @@
         </h3>-->
 
 
-        <p class="address">
+       <!-- <p class="address">
 
           <span>
             3221 E Central Texas Expressway
@@ -729,7 +774,7 @@
             Killeen, TX 76543
           </span>
 
-        </p>
+        </p>-->
 
 
         <iframe
@@ -843,7 +888,6 @@
     });
 
 
-    /* PAGE DISCLAIMER */
     const disclaimerButton =
       document.getElementById("disclaimerButton");
 
