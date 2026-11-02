@@ -185,6 +185,120 @@
 
 
     /* ==================================================
+       PRIMARY ACTION — SAVE CONTACT
+       ================================================== */
+    .btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: inline-block;
+      width: auto;
+      min-width: 130px;
+      max-width: 70%;
+      padding: 9px 22px;
+      margin: 14px auto;
+      margin-top: 36px;
+      border: none;
+      border-radius: 30px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--echo-soft-white);
+
+      background:
+        radial-gradient(
+          140% 120% at 50% 0%,
+          rgba(126,166,246,.40) 0%,
+          rgba(84,124,218,.20) 22%,
+          rgba(35,65,125,0) 58%
+        ),
+        linear-gradient(
+          180deg,
+          #6990DE 0%,
+          #4C70C2 17.5%,
+          #385AA0 33.75%,
+          #2A4C87 50%,
+          #1D396C 100%
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.18),
+        inset 0 -1px 0 rgba(0,0,0,.72),
+        0 0 0 1px rgba(34,133,255,.35),
+        0 0 14px rgba(37,133,255,.18),
+        0 8px 20px rgba(0,0,0,.35);
+    }
+
+    /* BUTTON UPPER MATERIAL RESPONSE */
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      height: 52%;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 2;
+      filter: blur(13px);
+
+      background:
+        radial-gradient(
+          70px 24px at 8% 10%,
+          rgba(255,255,255,.78) 0%,
+          rgba(255,255,255,.28) 16%,
+          rgba(255,255,255,0) 45%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.16) 0%,
+          rgba(255,255,255,.07) 10%,
+          rgba(255,255,255,0) 24%
+        ),
+        radial-gradient(
+          120% 85% at 50% 105%,
+          rgba(29,114,255,.20) 0%,
+          rgba(15,58,181,.10) 30%,
+          rgba(0,0,0,0) 60%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,0) 72%,
+          rgba(0,132,255,.22) 84%,
+          rgba(74,200,255,.72) 94%,
+          rgba(10,71,221,.40) 100%
+        );
+    }
+
+    /* BUTTON EDGE TREATMENT */
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 3;
+
+      box-shadow:
+        inset 0 0 0 1px rgba(112,174,246,.86),
+        inset 0 0 0 2px rgba(24,55,122,.30),
+        inset 0 0 10px rgba(86,145,232,.18),
+        0 0 12px rgba(72,137,226,.20),
+        0 0 20px rgba(72,137,226,.07);
+    }
+
+    /* BUTTON LABEL */
+    .btn-label {
+      position: relative;
+      z-index: 4;
+      font-family: "Times New Roman", serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,.93);
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+    }
+
+
+    /* ==================================================
        CONTACT / SOCIAL ACTIONS
        ================================================== */
     .icon-row {
@@ -510,6 +624,23 @@
 
 
       <!-- ==================================================
+           PRIMARY ACTION — SAVE CONTACT
+           ================================================== -->
+      <a
+        class="btn"
+        id="contactButton"
+        href="assets/contact.vcf"
+        download
+        aria-label="Save Natalie Navarro contact">
+
+        <span class="btn-label">
+          Save Contact
+        </span>
+
+      </a>
+
+
+      <!-- ==================================================
            CONTACT / SOCIAL ACTIONS
 
            CHANGE:
@@ -717,6 +848,17 @@
        DISCLAIMER BEHAVIOR
        ================================================== -->
   <script>
+
+    /* CONTACT BUTTON HAPTIC FEEDBACK */
+    const contactButton =
+      document.getElementById("contactButton");
+
+    contactButton.addEventListener("click", () => {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(11);
+      }
+    });
+
 
     const disclaimerButton =
       document.getElementById("disclaimerButton");
