@@ -173,14 +173,128 @@
 
 
     /* ==================================================
+       PRIMARY ACTION — SAVE CONTACT
+       ================================================== */
+    .btn {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: inline-block;
+      width: auto;
+      min-width: 130px;
+      max-width: 70%;
+      padding: 9px 22px;
+      margin: 14px auto;
+      margin-top: 27px;
+      border: none;
+      border-radius: 30px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--echo-soft-white);
+
+      background:
+        radial-gradient(
+          140% 120% at 50% 0%,
+          rgba(102,132,184,.34) 0%,
+          rgba(66,90,132,.18) 22%,
+          rgba(32,45,64,0) 58%
+        ),
+        linear-gradient(
+          180deg,
+          #3A78D3 0%,
+          #0A4FB8 17.5%,
+          #00379D 33.75%,
+          #001F8A 50%,
+          #1E254F 100%
+        );
+
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.16),
+        inset 0 -1px 0 rgba(0,0,0,.68),
+        0 0 0 1px rgba(59,84,122,.28),
+        0 0 12px rgba(47,73,110,.14),
+        0 8px 20px rgba(0,0,0,.38);
+    }
+
+    /* BUTTON UPPER MATERIAL RESPONSE */
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 2px;
+      height: 52%;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 2;
+      filter: blur(13px);
+
+      background:
+        radial-gradient(
+          70px 24px at 8% 10%,
+          rgba(255,255,255,.74) 0%,
+          rgba(232,239,250,.28) 16%,
+          rgba(255,255,255,0) 45%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(255,255,255,.15) 0%,
+          rgba(230,238,249,.065) 10%,
+          rgba(255,255,255,0) 24%
+        ),
+        radial-gradient(
+          120% 85% at 50% 105%,
+          rgba(33,92,190,.24) 0%,
+          rgba(8,52,157,.13) 30%,
+          rgba(0,0,0,0) 60%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(0,0,0,0) 0%,
+          rgba(0,0,0,0) 72%,
+          rgba(9,64,169,.20) 84%,
+          rgba(45,101,190,.38) 94%,
+          rgba(12,31,105,.34) 100%
+        );
+    }
+
+    /* BUTTON EDGE TREATMENT */
+    .btn::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 3;
+
+      box-shadow:
+        inset 0 0 0 1px rgba(155,170,188,.78),
+        inset 0 0 0 2px rgba(22,38,72,.45),
+        inset 0 0 9px rgba(60,82,118,.14),
+        0 0 10px rgba(80,100,125,.09),
+        0 0 18px rgba(30,45,70,.04);
+    }
+
+    /* BUTTON LABEL */
+    .btn-label {
+      position: relative;
+      z-index: 4;
+      font-family: "Times New Roman", serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: rgba(255,255,255,.93);
+      text-shadow: 0 1px 2px rgba(0,0,0,.35);
+    }
+
+
+    /* ==================================================
        CONTACT / SOCIAL ACTIONS
        ================================================== */
     .icon-row {
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
-      gap: 27px;
-      margin-top: 33px;
+      gap: 37px;
+      margin-top: 27px;
     }
 
 
@@ -290,7 +404,7 @@
        BRAND SIGNATURE
        ================================================== */
     .brand-footer {
-      margin-top: 42px;
+      margin-top: 40px;
       display: flex;
       justify-content: center;
     }
@@ -454,13 +568,30 @@
         <a
           href="assets/contact.vcf"
           download
-          aria-label="Add Darryl Taylor to contacts">
+          aria-label="Add Darryl Tyler to contacts">
 
           Darryl Tyler
 
         </a>
 
       </h1>
+
+
+      <!-- ==================================================
+           PRIMARY ACTION — SAVE CONTACT
+           ================================================== -->
+      <a
+        class="btn"
+        id="contactButton"
+        href="assets/contact.vcf"
+        download
+        aria-label="Save Darryl Tyler contact">
+
+        <span class="btn-label">
+          Save Contact
+        </span>
+
+      </a>
 
 
       <!-- ==================================================
@@ -671,6 +802,17 @@
        DISCLAIMER BEHAVIOR
        ================================================== -->
   <script>
+
+    /* CONTACT BUTTON HAPTIC FEEDBACK */
+    const contactButton =
+      document.getElementById("contactButton");
+
+    contactButton.addEventListener("click", () => {
+      if ("vibrate" in navigator) {
+        navigator.vibrate(11);
+      }
+    });
+
 
     const disclaimerButton =
       document.getElementById("disclaimerButton");
