@@ -78,7 +78,7 @@
       overflow: hidden;
       display: inline-block;
       width: auto;
-      min-width: 120px;
+      min-width: 100px;
       max-width: 70%;
       padding: 9px 22px;
       margin: 23px 0 0;
@@ -182,16 +182,22 @@
     .btn-label {
       position: relative;
       z-index: 6;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 16px;
+      line-height: 1;
       color: rgba(255, 255, 255, 0.85);
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     }
-
+    
     .btn-label i {
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1;
       opacity: 0.85;
       color: rgba(255, 255, 255, 0.98);
-      transform: translateX(2px);
+      transform: none;
     }
 
     .icon-row {
@@ -329,8 +335,8 @@
         aria-label="Save Contact"
       >
         <span class="btn-label">
-          <!-- <i class="fa-solid fa-user-plus" aria-hidden="true"></i> -->
-          Save Contact
+          <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+          <span>Save</span>
         </span>
       </a>
 
