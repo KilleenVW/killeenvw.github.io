@@ -156,20 +156,28 @@
 
     /* BUTTON EDGE TREATMENT — BLACK RING CHALLENGER */
     .btn::after {
-      content: "";
-      position: absolute;
-      z-index: 3;
-      inset: 0;
-      border-radius: inherit;
-      pointer-events: none;
+        content: "";
+        position: absolute;
+        z-index: 3;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
 
-      box-shadow:
-        inset 0 0 0 1px rgba(2, 3, 6, 0.96),
-        inset 0 0 0 2px rgba(12, 16, 24, 0.80),
-        inset 0 0 9px rgba(0, 0, 0, 0.30),
-        0 0 11px rgba(0, 0, 0, 0.22),
-        0 0 19px rgba(0, 0, 0, 0.075);
-    }
+        background:
+          radial-gradient(
+            circle at 9% 11%,
+            rgba(255,255,255,.90) 0%,
+            rgba(149,226,255,.75) 0.75px,
+            rgba(255,255,255,0) 3px
+          );
+
+        box-shadow:
+          inset 0 0 0 1px rgba(2,3,6,.96),
+          inset 0 0 0 2px rgba(12,16,24,.80),
+          inset 0 0 9px rgba(0,0,0,.30),
+          0 0 11px rgba(0,0,0,.22),
+          0 0 19px rgba(0,0,0,.075);
+      }
 
     /* BUTTON LABEL — HYBRID FIELD TEST */
     .btn-label {
