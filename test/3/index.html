@@ -230,37 +230,44 @@
     .message { color: var(--echo-light-blue); }
     .email { color: var(--manila); } 
 
-    /* = LOCATION — SALES MAP MODULE = */
-    .map-section {
+    /* = VW MEDIA PORTAL — LIVE EMBED DIAGNOSTIC = */
+    .media-section {
       margin-top: 44px;
       text-align: center;
     }
 
-    /*.map-section h3 {
-      margin: 0;
-      font-size: 24px;
-      font-weight: 600;
-    }*/
-
-    .address {
-      margin: 8px 0 15px;
-      font-size: 16px;
-      opacity: .9;
-    }
-
-    .address span {
-      display: block;
-    }
-
-    .map-section iframe {
-      display: block;
+    .media-portal {
+      position: relative;
       width: 100%;
       height: 150px;
-      border: 0;
+      overflow: hidden;
       border-radius: 15px;
+      background: #000;
     }
 
-    .directions-link {
+    .media-portal iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 390px;
+      height: 800px;
+      border: 0;
+      transform: scale(var(--portal-scale, .56));
+      transform-origin: top left;
+      pointer-events: none;
+      background: #000;
+    }
+
+    .media-portal-link {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: block;
+      border-radius: inherit;
+      text-decoration: none;
+    }
+
+    .media-link {
       display: block;
       margin-top: 10px;
       color: rgba(255,255,255,.78);
@@ -269,7 +276,7 @@
       text-decoration: none;
     }
 
-    .directions-link span {
+    .media-link span {
       color: var(--bright-blue);
     }
 
@@ -403,38 +410,32 @@
         </a>
       </div>  
 
-      <!-- = LOCATION — SALES MAP MODULE = -->
-      <section class="map-section">
+      <!-- = VW MEDIA PORTAL — LIVE EMBED DIAGNOSTIC = -->
+      <section class="media-section">
+        <div class="media-portal" id="mediaPortal">
+          <iframe
+            src="https://media.vw.com/"
+            loading="eager"
+            title="Volkswagen US Media Site live preview">
+          </iframe>
 
-        <!--<h3>
-          Come See Me
-        </h3>-->
-
-        <!--<p class="address">
-          <span>
-            3221 E Central Texas Expressway
-          </span>
-          <span>
-            Killeen, TX 76543
-          </span>
-        </p>-->
-
-        <iframe
-          src="https://www.google.com/maps?q=3221%20E%20Central%20Texas%20Expressway%20Killeen%20TX%2076543&t=k&output=embed"
-          allowfullscreen
-          loading="lazy"
-          title="Volkswagen dealership location">
-        </iframe>
+          <a
+            class="media-portal-link"
+            href="https://media.vw.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Explore the Volkswagen US Media Site">
+          </a>
+        </div>
 
         <a
-          class="directions-link"
-          href="https://www.google.com/maps/search/?api=1&query=3221+E+Central+Texas+Expressway+Killeen+TX+76543"
+          class="media-link"
+          href="https://media.vw.com/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Get directions to Killeen Volkswagen">
-          For directions, click the map or click <span>here</span>.
+          aria-label="Explore the Volkswagen US Media Site">
+          To explore Volkswagen, click above or click <span>here</span>.
         </a>
-
       </section>
 
       <div class="brand-footer">
@@ -475,6 +476,19 @@
   </aside>
 
   <script>
+    const mediaPortal = document.getElementById("mediaPortal");
+
+    function scaleMediaPortal() {
+      const sourceWidth = 390;
+      mediaPortal.style.setProperty(
+        "--portal-scale",
+        mediaPortal.clientWidth / sourceWidth
+      );
+    }
+
+    scaleMediaPortal();
+    window.addEventListener("resize", scaleMediaPortal);
+
     const contactButton = document.getElementById("contactButton");
 
     contactButton.addEventListener("click", () => {
