@@ -252,7 +252,9 @@
       width: 400px;
       height: 800px;
       border: 0;
-      transform: scale(var(--portal-scale, .56));
+      /* Crop the upper utility row while preserving the
+         VW Media identity bar and live hero below it. */
+      transform: scale(var(--portal-scale, .55)) translateY(-66px);
       transform-origin: top left;
       pointer-events: none;
       background: #000;
@@ -479,7 +481,7 @@
     const mediaPortal = document.getElementById("mediaPortal");
 
     function scaleMediaPortal() {
-      const sourceWidth = 390;
+      const sourceWidth = 400;
       mediaPortal.style.setProperty(
         "--portal-scale",
         mediaPortal.clientWidth / sourceWidth
