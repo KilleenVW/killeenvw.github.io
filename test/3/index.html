@@ -14,14 +14,16 @@
 
   <style>
     :root {
+      /* PAGE MATERIALS */
       --bg-image: url("JettaGLIBGDark.png");
+      --page-overlay: rgba(0, 0, 0, 0.11);
+      --card-bg: rgba(0, 0, 0, 0.50);
+
+      /* SHARED ACCENT PALETTE */
       --echo-light-blue: #6996C7;
       --bright-blue: #64A0F2;
       --echo-soft-white: #F7F5F2;
       --manila: #E7DCB6;
-      --card-bg: rgba(0, 0, 0, 0.50);
-      --card-bg-blue: rgba(29, 58, 101, 0.50);
-      --page-overlay: rgba(0, 0, 0, 0.11);
     }
 
     body {
@@ -50,7 +52,7 @@
     }
 
     .card {
-      padding: 25px 67px 40px;
+      padding: 25px 0 40px;
       margin: 0 8px;
       background: var(--card-bg);
       border-radius: 18px;
@@ -111,8 +113,6 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.18),
         inset 0 -1px 0 rgba(0, 0, 0, 0.72),
         0 0 0 1.2px rgba(42, 99, 232, 0.35);
-        /*0 0 31px rgba(42, 99, 232, 0.12),*/
-        /*0 8px 20px rgba(0, 0, 0, 0.35);*/
     }
 
     /* BUTTON UPPER MATERIAL RESPONSE */
@@ -158,7 +158,7 @@
             rgba(18, 66, 198, 0.06) 100%
           );
       }
-    /* BUTTON EDGE TREATMENT — BLACK RING CHALLENGER */
+    /* BUTTON EDGE TREATMENT — BLACK RING SPECIMEN */
     .btn::after {
         content: "";
         position: absolute;
@@ -183,7 +183,7 @@
           0 0 19px rgba(0,0,0,.075);
       }
 
-    /* BUTTON LABEL — HYBRID FIELD TEST */
+    /* BUTTON LABEL — HYBRID */
     .btn-label {
       position: relative;
       z-index: 6;
@@ -230,7 +230,7 @@
     .message { color: var(--echo-light-blue); }
     .email { color: var(--manila); } 
 
-    /* = VW MEDIA PORTAL — LIVE EMBED DIAGNOSTIC = */
+    /* = VW MEDIA PORTAL — LIVE EMBED = */
     .media-section {
       margin-top: 37px;
       text-align: center;
@@ -238,12 +238,11 @@
 
     .media-portal {
       position: relative;
-      width: calc(100% + 28px);
-      margin-left: -14px;
+      margin: 0 53px;
       height: 109px;
       overflow: hidden;
       border-radius: 10px;
-      background: #000;
+      background: #000000;
     }
 
     .media-portal iframe {
@@ -253,13 +252,13 @@
       width: var(--portal-source-width, 630px);
       height: 800px;
       border: 0;
-      /* Diagnostic: render the live VW page at a true .35 scale.
-         The larger source viewport lets more of each hero image
-         fit inside the same 150px portal aperture. */
+      /* Intentional overscan: CSS renders at .36 while JavaScript
+         sizes the source viewport from .35 to bury the site's
+         right-edge artifact behind the portal clip. */
       transform: scale(.36) translateY(-137px);
       transform-origin: top left;
       pointer-events: none;
-      background: #000;
+      background: #000000;
     }
 
     .media-portal-link {
@@ -414,7 +413,7 @@
         </a>
       </div>  
 
-      <!-- = VW MEDIA PORTAL — LIVE EMBED DIAGNOSTIC = -->
+      <!-- = VW MEDIA PORTAL — LIVE EMBED = -->
       <section class="media-section">
         <div class="media-portal" id="mediaPortal">
           <iframe
@@ -469,13 +468,13 @@
     hidden
   >
     <button class="disclaimer-close" id="disclaimerClose" type="button" aria-label="Close disclaimer">&times;</button>
-    <h2 id="disclaimerTitle">Independent Salesperson Page</h2>
+    <h2 id="disclaimerTitle">Independent Volkswagen Specialist Page</h2>
     <p>
       This independently created and maintained personal contact page is for a
-      Killeen Volkswagen sales professional and is not an official website of
-      Killeen Volkswagen or Volkswagen of America. Volkswagen trademarks and
-      logos are the property of their respective owners. The Volkswagen link
-      directs to the official Volkswagen website.
+      Volkswagen brand specialist at Killeen Volkswagen and is not an official
+      website of Killeen Volkswagen or Volkswagen of America. Volkswagen
+      trademarks and logos are the property of their respective owners.
+      Volkswagen links on this page direct to official Volkswagen websites.
     </p>
   </aside>
 
@@ -483,8 +482,11 @@
     const mediaPortal = document.getElementById("mediaPortal");
 
     function sizeMediaPortalSource() {
-      const portalScale = .35;
-      const sourceWidth = mediaPortal.clientWidth / portalScale;
+      /* Deliberately lower than the CSS render scale (.36).
+         This creates slight horizontal overscan so the embedded
+         site's right-edge artifact is clipped outside the aperture. */
+      const sourceLayoutScale = .35;
+      const sourceWidth = mediaPortal.clientWidth / sourceLayoutScale;
 
       mediaPortal.style.setProperty(
         "--portal-source-width",
