@@ -249,12 +249,13 @@
       position: absolute;
       top: 0;
       left: 0;
-      width: 400px;
+      width: var(--portal-source-width, 630px);
       height: 800px;
       border: 0;
-      /* Crop the upper utility row while preserving the
-         VW Media identity bar and live hero below it. */
-      transform: scale(var(--portal-scale, .55)) translateY(-120px);
+      /* Diagnostic: render the live VW page at a true .35 scale.
+         The larger source viewport lets more of each hero image
+         fit inside the same 150px portal aperture. */
+      transform: scale(.35) translateY(-190px);
       transform-origin: top left;
       pointer-events: none;
       background: #000;
@@ -480,16 +481,18 @@
   <script>
     const mediaPortal = document.getElementById("mediaPortal");
 
-    function scaleMediaPortal() {
-      const sourceWidth = 400;
+    function sizeMediaPortalSource() {
+      const portalScale = .35;
+      const sourceWidth = mediaPortal.clientWidth / portalScale;
+
       mediaPortal.style.setProperty(
-        "--portal-scale",
-        mediaPortal.clientWidth / sourceWidth
+        "--portal-source-width",
+        `${sourceWidth}px`
       );
     }
 
-    scaleMediaPortal();
-    window.addEventListener("resize", scaleMediaPortal);
+    sizeMediaPortalSource();
+    window.addEventListener("resize", sizeMediaPortalSource);
 
     const contactButton = document.getElementById("contactButton");
 
