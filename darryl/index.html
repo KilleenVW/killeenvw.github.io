@@ -89,6 +89,9 @@
     }
 
 
+    /* iOS fallback background. Hidden on the established Android path. */
+    .background-layer { display: none; }
+
     /* ==================================================
        BACKGROUND OVERLAY
        ================================================== */
@@ -527,6 +530,72 @@
       outline-offset: 1px;
     }
 
+
+    /* ==================================================
+       COMPATIBILITY LAYER — NOTHING ABOVE IS RE-DESIGNED
+       ================================================== */
+
+    /* Safeguard for unusually narrow screens, regardless of platform.
+       Gives the icon row room without reducing tap-target sizes. */
+    @media (max-width: 360px) {
+      .card { padding-left: 24px; padding-right: 24px; }
+    }
+
+    /* iOS WebKit detection via a CSS feature commonly exposed by iOS.
+       This is a practical targeting method, not a guaranteed OS identifier.
+       Android retains the original body background and card layout. */
+    @supports (-webkit-touch-callout: none) {
+      body { background: transparent; }
+      .background-layer {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background: var(--bg-image) center center / cover no-repeat;
+        pointer-events: none;
+      }
+      .overlay { z-index: 1; }
+      .container { z-index: 2; align-items: safe center; }
+
+      /* Preserve Darryl’s 45px icon tiles and use a smaller iOS gap. */
+      .icon { flex: 0 0 45px; }
+      .icon-row { gap: clamp(8px, 5vw, 24px); }
+    }
+
+    /* A genuinely short mobile viewport needs a more compact arrangement.
+       Restricted to iOS/WebKit for this first controlled experiment so the
+       known-good Android visual baseline remains untouched. */
+    @supports (-webkit-touch-callout: none) {
+      @media (max-height: 820px) and (orientation: portrait) {
+        .container {
+          padding-top: max(12px, env(safe-area-inset-top));
+          padding-bottom: max(12px, env(safe-area-inset-bottom));
+        }
+        .card { padding-top: 24px; padding-bottom: 28px; }
+        .btn { margin-top: 22px; margin-bottom: 12px; }
+        .icon-row { margin-top: 18px; }
+        .map-section { margin-top: 28px; }
+        .map-section iframe { height: clamp(125px, 21dvh, 160px); }
+        .brand-footer { margin-top: 26px; }
+      }
+    }
+
+    /* Optional temporary diagnostics: active only when ?diag=1 is in URL. */
+    .layout-diagnostics {
+      position: fixed;
+      top: max(6px, env(safe-area-inset-top));
+      right: 6px;
+      z-index: 100;
+      max-width: 205px;
+      padding: 6px 8px;
+      border-radius: 6px;
+      background: rgba(0,0,0,.82);
+      color: #fff;
+      font: 10px/1.4 monospace;
+      white-space: pre-line;
+      pointer-events: none;
+    }
+    .layout-diagnostics[hidden] { display: none; }
   </style>
 </head>
 
@@ -536,6 +605,7 @@
   <!-- ==================================================
        BACKGROUND OVERLAY
        ================================================== -->
+  <div class="background-layer" aria-hidden="true"></div>
   <div class="overlay"></div>
 
 
@@ -778,6 +848,8 @@
   </aside>
 
 
+  <output class="layout-diagnostics" id="layoutDiagnostics" hidden aria-live="off"></output>
+
   <!-- ==================================================
        DISCLAIMER BEHAVIOR
        ================================================== -->
@@ -886,6 +958,59 @@
 
   </script>
 
+  <!-- ==================================================
+       RESPONSIVE NAME SAFEGUARD
+       Runs only when the rendered name exceeds its actual available width.
+       At normal widths the original 52px font remains unchanged.
+       ================================================== -->
+  <script>
+    const nameHeading = document.querySelector(".name");
+    const nameLink = nameHeading.querySelector("a");
+    function fitName() {
+      nameHeading.style.fontSize = "";
+      const available = nameHeading.clientWidth - 4;
+      if (!available) return;
+      const actual = nameLink.getBoundingClientRect().width;
+      if (actual <= available) return;
+      const current = parseFloat(getComputedStyle(nameHeading).fontSize);
+      const fitted = Math.max(30, Math.floor(current * available / actual));
+      nameHeading.style.fontSize = fitted + "px";
+    }
+    fitName();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitName);
+    window.addEventListener("resize", fitName);
+  </script>
+
+  <!-- ==================================================
+       OPTIONAL ONE-SCREEN VIEWPORT DIAGNOSTICS
+       Add ?diag=1 to URL to show dimensions; normal visitors see nothing.
+       ================================================== -->
+  <script>
+    const diagnosticsPanel = document.getElementById("layoutDiagnostics");
+    if (new URLSearchParams(window.location.search).get("diag") === "1") {
+      diagnosticsPanel.hidden = false;
+      const reportLayout = () => {
+        const card = document.querySelector(".card");
+        const row = document.querySelector(".icon-row");
+        const box = card.getBoundingClientRect();
+        const viewport = window.visualViewport;
+        const backgroundLayer = getComputedStyle(document.querySelector(".background-layer"));
+        diagnosticsPanel.textContent = [
+          "VIEWPORT DIAGNOSTICS",
+          "CSS viewport: " + innerWidth + " x " + innerHeight,
+          "Visible height: " + Math.round(viewport ? viewport.height : innerHeight),
+          "Card: top " + Math.round(box.top) + ", h " + Math.round(box.height),
+          "Name: " + getComputedStyle(nameHeading).fontSize,
+          "Icons: gap " + getComputedStyle(row).gap,
+          "Background: " + (backgroundLayer.display === "none" ? "body" : "fixed layer")
+        ].join("\n");
+      };
+      reportLayout();
+      document.fonts?.ready.then(reportLayout);
+      window.addEventListener("resize", reportLayout);
+      window.visualViewport?.addEventListener("resize", reportLayout);
+    }
+  </script>
 </body>
 
 </html>
