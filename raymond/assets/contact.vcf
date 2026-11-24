@@ -1,1 +1,17 @@
+BEGIN:VCARD
+VERSION:3.0
 
+N:Lastname;Raymond;;;
+FN:Raymond Lastname
+
+ORG:Killeen Volkswagen
+TITLE:Customer Experience Professional
+
+TEL;TYPE=CELL:7276312950
+
+EMAIL:raymondcjr.vw@gmail.com
+
+URL:https://killeenvw.github.io/raymond
+URL:https://www.vw.com/
+
+END:VCARD
