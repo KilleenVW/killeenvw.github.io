@@ -291,6 +291,8 @@
 
     /* ==================================================
        CONTACT / SOCIAL ACTIONS
+       CURRENTLY UNUSED ON MANAGER PAGE
+       Rules retained for easy restoration.
        ================================================== */
     .icon-row {
       display: flex;
@@ -666,20 +668,14 @@
 
 
       <!-- ==================================================
-           CONTACT / SOCIAL ACTIONS
-
-           CHANGE:
-           PHONE E164
-           EMAIL ADDRESS
-           FIRST NAME
-
-           Facebook remains available below but is
-           commented out by default.
+           CONTACT / SOCIAL ACTIONS — MANAGER PAGE
+           Currently disabled. Remove the outer comment markers
+           below to restore Natalie's Call / Text / Email row.
            ================================================== -->
+
+      <!--
       <div class="icon-row">
 
-
-        <!-- CALL -->
         <a
           class="icon phone"
           href="tel:8329080809"
@@ -693,7 +689,6 @@
         </a>
 
 
-        <!-- TEXT -->
         <a
           class="icon message"
           href="sms:8329080809"
@@ -707,7 +702,6 @@
         </a>
 
 
-        <!-- EMAIL -->
         <a
           class="icon email"
           href="mailto:nnavarro@killeenauto.com"
@@ -720,36 +714,8 @@
 
         </a>
 
-
-        <!-- ==================================================
-             FACEBOOK — OPTIONAL
-
-             To enable:
-             1. Remove the opening and closing comment markers.
-             2. Replace FACEBOOK URL.
-             3. Replace FIRST NAME.
-             ================================================== -->
-
-        <!--
-
-        <a
-          class="icon facebook"
-          href="FACEBOOK URL"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Visit FIRST NAME on Facebook">
-
-          <i
-            class="fa-brands fa-facebook-f"
-            aria-hidden="true">
-          </i>
-
-        </a>
-
-        -->
-
-
       </div>
+      -->
 
 
       <!-- ==================================================
@@ -1022,7 +988,7 @@
           "Visible height: " + Math.round(viewport ? viewport.height : innerHeight),
           "Card: top " + Math.round(box.top) + ", h " + Math.round(box.height),
           "Name: " + getComputedStyle(nameHeading).fontSize,
-          "Icons: gap " + getComputedStyle(row).gap,
+          "Icons: " + (row ? "gap " + getComputedStyle(row).gap : "not present"),
           "Background: " + (backgroundLayer.display === "none" ? "body" : "fixed layer")
         ].join("\n");
       };
